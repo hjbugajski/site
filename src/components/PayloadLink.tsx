@@ -10,5 +10,9 @@ export interface PayloadLinkProps {
 const PAYLOAD_URL = process.env.NEXT_PUBLIC_PAYLOAD_URL;
 
 export default function PayloadLink({ children, link }: PayloadLinkProps) {
-  return <Link href={link.file ? PAYLOAD_URL! + link.file.url! : link.url}>{children}</Link>;
+  return (
+    <Link href={link.file ? PAYLOAD_URL! + link.file.url! : link.url} target={link.newTab ? '_blank' : '_self'}>
+      {children}
+    </Link>
+  );
 }
