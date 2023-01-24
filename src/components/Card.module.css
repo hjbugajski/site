@@ -1,0 +1,101 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  background-color: var(--color-canvas);
+  border: var(--border);
+  border-radius: var(--border-radius);
+}
+
+.titleContainer {
+  margin-bottom: 12px;
+}
+
+.titleToolbar {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.titleToolbar button {
+  margin-top: -8px;
+  margin-right: -8px;
+}
+
+.title {
+  margin-bottom: 0 !important;
+  font-size: 20px;
+}
+
+.tags {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 4px;
+}
+
+.tag {
+  padding: 2px 6px;
+  color: var(--color-subtle);
+  font-weight: 600;
+  font-size: 12px;
+  border: var(--border);
+  border-radius: var(--border-radius);
+}
+
+.description {
+  flex: 1;
+}
+
+.description:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.footer {
+  margin-top: 12px;
+  color: var(--color-subtle);
+  font-weight: 600;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.blue {
+  border-color: var(--color-blue6);
+}
+
+.blue .title {
+  color: var(--color-blue11);
+}
+
+.teal {
+  border-color: var(--color-teal6);
+}
+
+.teal .title {
+  color: var(--color-teal11);
+}
+
+.tomato {
+  border-color: var(--color-tomato6);
+}
+
+.tomato .title {
+  color: var(--color-tomato11);
+}
+
+.plum {
+  border-color: var(--color-plum6);
+}
+
+.plum .title {
+  color: var(--color-plum11);
+}
+
+.violet {
+  border-color: var(--color-violet6);
+}
+
+.violet .title {
+  color: var(--color-violet11);
+}

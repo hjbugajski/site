@@ -1,14 +1,21 @@
-import './globals.css';
+import { Space_Grotesk } from '@next/font/google';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+import '@/styles/globals.css';
+import Toolbar from '@/components/Toolbar';
+import { fetchGlobals } from '@/graphql';
+
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: 'variable' });
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const { toolbar } = await fetchGlobals();
+
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
-      <body>{children}</body>
+      <body className={spaceGrotesk.className}>
+        <Toolbar toolbar={toolbar} />
+        {children}
+      </body>
     </html>
   );
 }
