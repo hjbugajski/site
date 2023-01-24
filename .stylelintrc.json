@@ -1,0 +1,8 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-rational-order-fix", "stylelint-config-prettier"],
+  "rules": {
+    "custom-property-empty-line-before": null,
+    "order/properties-alphabetical-order": null,
+    "selector-class-pattern": null
+  }
+}
