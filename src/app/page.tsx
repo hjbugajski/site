@@ -7,7 +7,7 @@ import styles from './page.module.css';
 
 export interface PageProps {
   params: {
-    slug: string[];
+    slug: string | undefined;
   };
 }
 
@@ -33,8 +33,8 @@ export async function generateStaticParams() {
   try {
     const pages = await fetchPages();
 
-    return pages.map(({ slug }) => ({ slug: [slug] }));
+    return pages.map(({ slug }) => ({ slug }));
   } catch {
-    return { slug: undefined };
+    return [{ slug: undefined }];
   }
 }
