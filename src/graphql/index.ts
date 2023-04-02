@@ -29,10 +29,7 @@ export const fetchGlobals = async (): Promise<{ toolbar: PayloadToolbar | undefi
   return { toolbar: data.Toolbar };
 };
 
-export const fetchPage = async (segments?: string[]): Promise<PayloadPage> => {
-  const slugSegments = segments || ['home'];
-  const slug = slugSegments[slugSegments.length - 1];
-
+export const fetchPage = async (slug?: string): Promise<PayloadPage> => {
   const { data, error } = await fetch(PAYLOAD_URL, {
     method: 'POST',
     headers: {
@@ -42,7 +39,7 @@ export const fetchPage = async (segments?: string[]): Promise<PayloadPage> => {
     body: JSON.stringify({
       query: PAGE,
       variables: {
-        slug
+        slug: slug || 'home'
       }
     })
   }).then((res) => res.json());
