@@ -29,6 +29,15 @@ export default async function Page({ params }: PageProps) {
   }
 }
 
+export async function generateMetadata({ params }: PageProps) {
+  const { meta } = await fetchPage(params.slug);
+
+  return {
+    title: meta.title,
+    description: meta.description
+  };
+}
+
 export async function generateStaticParams() {
   try {
     const pages = await fetchPages();
