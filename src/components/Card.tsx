@@ -11,20 +11,22 @@ export default function Card({ card }: { card: PayloadCard }) {
           <h1 className={styles.title}>{card.title}</h1>
           <ExternalLinksMenu links={card.links} />
         </div>
-        <div className={styles.tags}>
+        <ul className={styles.tags}>
           {card.tags.map((tag, i) => (
-            <span key={`key-${i}`} className={styles.tag}>
+            <li key={`key-${i}`} className={styles.tag}>
               {tag.value}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-      {card.body.map((item, i) => (
-        <p key={i} className={styles.description}>
-          {item.content}
-        </p>
-      ))}
-      <div className={styles.footer}>{card.footer}</div>
+      <div className={styles.body}>
+        {card.body.map((item, i) => (
+          <p key={i} className={styles.description}>
+            {item.content}
+          </p>
+        ))}
+      </div>
+      <p className={styles.footer}>{card.footer}</p>
     </div>
   );
 }

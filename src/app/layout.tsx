@@ -1,4 +1,4 @@
-import { Space_Grotesk } from '@next/font/google';
+import { Space_Grotesk } from 'next/font/google';
 
 import Toolbar from '@/components/Toolbar';
 import { VercelAnalytics } from '@/components/VercelAnalytics';
