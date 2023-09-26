@@ -7,15 +7,22 @@
 .toolbar {
   position: sticky;
   top: 0;
+
   height: 56px;
+
   background-color: var(--color-backdrop);
   backdrop-filter: saturate(180%) blur(8px);
-  transition-property: background-color, backdrop-filter, -webkit-backdrop-filter;
+
+  transition-property:
+    background-color,
+    backdrop-filter,
+    -webkit-backdrop-filter;
 }
 
 .innerContainer {
   flex-direction: row;
   gap: 16px;
+
   width: 100%;
   max-width: 996px;
   margin: 0 auto;

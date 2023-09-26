@@ -1,7 +1,9 @@
 .card {
   display: flex;
   flex-direction: column;
+
   padding: 12px;
+
   background-color: var(--color-canvas);
   border: var(--border);
   border-radius: var(--border-radius);
@@ -16,6 +18,7 @@
   flex-direction: row;
   gap: 8px;
   justify-content: space-between;
+
   margin-bottom: 8px;
 }
 
@@ -37,9 +40,11 @@
 
 .tag {
   padding: 2px 6px;
-  color: var(--color-subtle);
-  font-weight: 600;
+
   font-size: 12px;
+  font-weight: 600;
+  color: var(--color-subtle);
+
   border: var(--border);
   border-radius: var(--border-radius);
 }
@@ -54,10 +59,11 @@
 
 .footer {
   margin-top: 12px;
-  color: var(--color-subtle);
-  font-weight: 600;
+
   font-size: 12px;
+  font-weight: 600;
   font-style: italic;
+  color: var(--color-subtle);
 }
 
 .blue {
