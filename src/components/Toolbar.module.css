@@ -19,7 +19,8 @@
     -webkit-backdrop-filter;
 }
 
-.innerContainer {
+.list {
+  display: flex;
   flex-direction: row;
   gap: 16px;
 
@@ -27,4 +28,6 @@
   max-width: 996px;
   margin: 0 auto;
   padding: 0 16px;
+
+  list-style: none;
 }

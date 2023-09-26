@@ -11,18 +11,20 @@ import styles from './ExternalLinksMenu.module.css';
 export default function ExternalLinksMenu({ links }: { links: PayloadLinkType[] }) {
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger asChild>
-        <button className={styles.iconButton} aria-label="External links menu">
-          <IconExternalLink />
-        </button>
+      <DropdownMenu.Trigger className={styles.iconButton} aria-label="External links menu">
+        <IconExternalLink />
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content align="end" className={styles.content}>
-          {links.map((link, i) => (
-            <PayloadLink key={`link-${i}`} link={link}>
-              <DropdownMenu.Item className={styles.item}>{link.label}</DropdownMenu.Item>
-            </PayloadLink>
-          ))}
+          <ul className={styles.list}>
+            {links.map((link, i) => (
+              <li key={i}>
+                <PayloadLink link={link}>
+                  <DropdownMenu.Item className={styles.item}>{link.label}</DropdownMenu.Item>
+                </PayloadLink>
+              </li>
+            ))}
+          </ul>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>

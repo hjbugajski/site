@@ -46,3 +46,9 @@
 .item:active {
   background-color: var(--color-active);
 }
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
