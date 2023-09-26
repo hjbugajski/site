@@ -12,7 +12,6 @@
     "prettier": "prettier --write . --ignore-unknown --ignore-path .gitignore"
   },
   "dependencies": {
-    "@next/font": "13.5.3",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@vercel/analytics": "^1.0.2",
     "graphql": "^16.8.1",
