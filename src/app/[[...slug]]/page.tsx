@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation';
 
+import Serialize from '@/components/serialize';
 import { fetchPage, fetchPages } from '@/lib/api';
 
-import PageClient from './page.client';
 import { metadata } from '../layout';
 
 export async function generateStaticParams() {
@@ -33,5 +33,5 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
     notFound();
   }
 
-  return <PageClient page={page} />;
+  return <>{page.content?.root?.children && <Serialize nodes={page.content.root.children} />}</>;
 }
