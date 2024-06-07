@@ -1,11 +1,10 @@
 import { Fragment } from 'react';
 
+import { Blocks } from '@/components/blocks';
 import { PayloadLink } from '@/lib/components/payload-link';
-import { PayloadFieldLink } from '@/lib/types/payload';
 import { cn } from '@/lib/utils/cn';
 import { slugify } from '@/lib/utils/slugify';
-
-import { Blocks } from './blocks';
+import { FieldLinkGroup } from '@/payload/payload-types';
 
 export type SerializeProps = {
   nodes: any[];
@@ -32,7 +31,7 @@ const renderText = (node: any) => {
   }
 };
 
-export default function Serialize({ nodes }: SerializeProps) {
+export function Serialize({ nodes }: SerializeProps) {
   const alignClasses = {
     left: 'text-left',
     center: 'text-center',
@@ -52,7 +51,7 @@ export default function Serialize({ nodes }: SerializeProps) {
   };
 
   return !nodes || nodes.length === 0 ? null : (
-    <Fragment>
+    <>
       {nodes.map((node, i) => {
         // @ts-expect-error – valid keys
         const alignClass = alignClasses[node.format ?? 'left'];
@@ -84,11 +83,10 @@ export default function Serialize({ nodes }: SerializeProps) {
             ) : null;
           case 'link': {
             const { fields } = node;
-            const link: PayloadFieldLink = {
+            const link: FieldLinkGroup = {
               text: '',
               type: fields.linkType === 'custom' ? 'external' : 'internal',
               page: fields.doc,
-              file: fields.doc,
               url: fields.url,
               rel: fields.rel,
               newTab: fields.newTab,
@@ -128,6 +126,6 @@ export default function Serialize({ nodes }: SerializeProps) {
             return <Fragment key={i}>{renderText(node)}</Fragment>;
         }
       })}
-    </Fragment>
+    </>
   );
 }

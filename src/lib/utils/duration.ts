@@ -20,7 +20,8 @@ export function formatDuration(start: string, end?: string) {
 
   const adjustedYears = years.toFixed();
   const adjustedMonths = months.toFixed();
-  const adjustedMonthsString = adjustedMonths > '0' && `${adjustedMonths} mo${adjustedMonths > '1' && 's'}`;
+  const adjustedMonthsString =
+    adjustedMonths > '0' && `${adjustedMonths} mo${adjustedMonths > '1' && 's'}`;
 
   return `${adjustedYears} ${adjustedYears === '1' ? 'yr' : 'yrs'} ${adjustedMonthsString}`;
 }

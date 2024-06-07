@@ -1,7 +1,7 @@
 import { PayloadLink } from '@/lib/components/payload-link';
-import { PayloadNavigation } from '@/lib/types/payload';
+import { Navigation as NavigationType } from '@/payload/payload-types';
 
-export default function Navigation({ links }: PayloadNavigation) {
+export default function Navigation({ links }: NavigationType) {
   return (
     <nav className="fixed w-full bg-background/75 backdrop-blur-md print:hidden">
       <ul className="mx-auto flex h-14 w-full max-w-2xl items-center gap-3 px-4">

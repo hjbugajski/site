@@ -7,7 +7,9 @@ export default function NotFound() {
     <section className="space-y-3">
       <div className="space-y-1">
         <h1 className="text-2xl font-bold text-gray-text-primary">Page Not Found</h1>
-        <p className="mx-auto max-w-2xl text-lg">We couldn&apos;t find the page you were looking for.</p>
+        <p className="mx-auto max-w-2xl text-lg">
+          We couldn&apos;t find the page you were looking for.
+        </p>
       </div>
       <p>
         <Link

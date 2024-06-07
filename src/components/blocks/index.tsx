@@ -1,17 +1,18 @@
-import { FC } from 'react';
-
-import { PayloadBlockItem, PayloadBlockSection } from '@/lib/types/payload';
+import {
+  BlockItem as BlockItemType,
+  BlockSection as BlockSectionType,
+} from '@/payload/payload-types';
 
 import BlockItem from './item';
 import BlockSection from './section';
 
-const blocks = {
-  item: BlockItem,
-  section: BlockSection,
-};
-
-export function Blocks({ blockType, ...props }: PayloadBlockItem | PayloadBlockSection) {
-  const RenderBlock: FC<any> = blocks[blockType];
-
-  return RenderBlock ? <RenderBlock {...props} /> : null;
+export function Blocks(props: BlockItemType | BlockSectionType) {
+  switch (props.blockType) {
+    case 'item':
+      return <BlockItem {...props} />;
+    case 'section':
+      return <BlockSection {...props} />;
+    default:
+      return null;
+  }
 }
