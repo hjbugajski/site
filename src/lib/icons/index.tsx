@@ -16,11 +16,12 @@ const icons = {
   servers: IconServers,
 };
 
-export const Icons = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement> & { name: keyof typeof icons }>(
-  ({ name, ...props }, ref) => {
-    const RenderIcon = icons[name];
+export const Icons = forwardRef<
+  SVGSVGElement,
+  SVGProps<SVGSVGElement> & { name: keyof typeof icons }
+>(({ name, ...props }, ref) => {
+  const RenderIcon = icons[name];
 
-    return RenderIcon ? <RenderIcon ref={ref} {...props} /> : null;
-  },
-);
+  return RenderIcon ? <RenderIcon ref={ref} {...props} /> : null;
+});
 Icons.displayName = 'Icons';

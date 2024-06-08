@@ -1,12 +1,14 @@
+import { getPayloadHMR } from '@payloadcms/next/utilities';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GeistSans } from 'geist/font/sans';
 import { Metadata } from 'next';
 import Script from 'next/script';
 
 import Navigation from '@/components/navigation';
-import { fetchGlobal } from '@/lib/api';
-import { PayloadNavigation } from '@/lib/types/payload';
+import { env } from '@/env/client';
 import { cn } from '@/lib/utils/cn';
+import payloadConfig from '@payload-config';
+
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -15,7 +17,8 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const navigation = await fetchGlobal<PayloadNavigation>('navigation');
+  const payload = await getPayloadHMR({ config: payloadConfig });
+  const navigation = await payload.findGlobal({ slug: 'navigation' });
 
   return (
     <html
@@ -29,9 +32,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Navigation {...navigation} />
         <main className="mx-auto w-full max-w-2xl px-4 pb-8 pt-16">{children}</main>
         <Script
-          src={process.env.NEXT_PUBLIC_UMAMI_SRC}
-          data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID}
-          data-domains={process.env.NEXT_PUBLIC_DOMAINS}
+          src={env.NEXT_PUBLIC_UMAMI_SRC}
+          data-website-id={env.NEXT_PUBLIC_UMAMI_ID}
+          data-domains={env.NEXT_PUBLIC_DOMAINS}
         />
         <SpeedInsights />
       </body>

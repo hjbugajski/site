@@ -3,8 +3,9 @@ import { ReactNode } from 'react';
 import { VariantProps, cva } from 'class-variance-authority';
 import Link from 'next/link';
 
+import { FieldLinkGroup } from '@/payload/payload-types';
+
 import { IconArrowUpRightSmall } from '../icons/arrow-up-right-small';
-import { PayloadFieldLink } from '../types/payload';
 import { cn } from '../utils/cn';
 import { linkProps } from '../utils/link';
 
@@ -37,7 +38,7 @@ const iconVariants = cva('inline-block', {
   },
 });
 
-export interface PayloadLinkProps extends PayloadFieldLink, VariantProps<typeof linkVariants> {
+export interface PayloadLinkProps extends FieldLinkGroup, VariantProps<typeof linkVariants> {
   children?: ReactNode;
   className?: string;
 }
