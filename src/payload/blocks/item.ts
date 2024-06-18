@@ -11,7 +11,7 @@ import {
   UnorderedListFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical';
-import { Block, Field } from 'payload/types';
+import { Block, Field } from 'payload';
 
 import { getRowLabel } from '@/payload/components/row-label/get-row-label';
 import { linkGroup } from '@/payload/fields/link';

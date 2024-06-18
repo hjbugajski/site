@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload/types';
+import { CollectionConfig } from 'payload';
 
 import { Role, hasRole, hasRoleField, hasRoleOrSelf, hasRoleOrSelfField } from '../access';
 
