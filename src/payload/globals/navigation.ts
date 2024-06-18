@@ -1,4 +1,4 @@
-import { GlobalConfig } from 'payload/types';
+import { GlobalConfig } from 'payload';
 
 import { Role, hasRole } from '@/payload/access';
 import { linkArray } from '@/payload/fields/link';

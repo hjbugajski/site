@@ -13,7 +13,7 @@ import {
   UnorderedListFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical';
-import { Block } from 'payload/types';
+import { Block } from 'payload';
 
 import { Item } from '@/payload/blocks/item';
 
