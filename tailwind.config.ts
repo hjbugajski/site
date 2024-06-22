@@ -27,7 +27,11 @@ const utilitiesPlugin = plugin(function ({ addUtilities }) {
 });
 
 const config: Config = {
-  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: [
+    './src/app/(site)/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/lib/components/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
   theme: {
     colors: {
       transparent: 'transparent',
