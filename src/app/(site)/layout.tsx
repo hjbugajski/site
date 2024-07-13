@@ -1,5 +1,6 @@
 import { getPayloadHMR } from '@payloadcms/next/utilities';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+// eslint-disable-next-line import/no-unresolved
 import { GeistSans } from 'geist/font/sans';
 import { Metadata } from 'next';
 import Script from 'next/script';
