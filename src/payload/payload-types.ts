@@ -34,6 +34,9 @@ export interface Config {
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
+  db: {
+    defaultIDType: string;
+  };
   globals: {
     navigation: Navigation;
   };
@@ -47,12 +50,15 @@ export interface UserAuthOperations {
     email: string;
   };
   login: {
-    password: string;
     email: string;
+    password: string;
   };
   registerFirstUser: {
     email: string;
     password: string;
+  };
+  unlock: {
+    email: string;
   };
 }
 /**
@@ -158,7 +164,6 @@ export interface FieldLinkGroup {
   newTab?: boolean | null;
   umamiEvent?: string | null;
   umamiEventId?: string | null;
-  id?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
