@@ -12,7 +12,12 @@ export const env = createEnv({
     PAYLOAD_ADMIN_USER: z.string().min(1),
     PAYLOAD_SECRET: z.string().min(1),
     RESEND_API_KEY: z.string().min(1),
-    SERVER_URL: z.string().min(1),
+    SERVER_URL: z
+      .string()
+      .min(1)
+      .transform((url) =>
+        process.env.VERCEL_ENV === 'preview' ? `https://${process.env.VERCEL_URL}` : url,
+      ),
   },
   runtimeEnv: {
     DEFAULT_FROM_ADDRESS: process.env.DEFAULT_FROM_ADDRESS,
