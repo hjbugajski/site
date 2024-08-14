@@ -166,6 +166,7 @@ export interface FieldLinkGroup {
   newTab?: boolean | null;
   umamiEvent?: string | null;
   umamiEventId?: string | null;
+  id?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -242,6 +243,7 @@ export interface BlockSection {
 export interface Auth {
   [k: string]: unknown;
 }
+
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}
