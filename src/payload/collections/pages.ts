@@ -1,5 +1,6 @@
 import { BlocksFeature, lexicalEditor } from '@payloadcms/richtext-lexical';
-import { CollectionConfig, FieldHook } from 'payload';
+import { revalidateTag } from 'next/cache';
+import { CollectionAfterChangeHook, CollectionConfig, FieldHook } from 'payload';
 
 import { slugify } from '@/lib/utils/slugify';
 import { Role, hasRole, hasRoleOrPublished } from '@/payload/access';
@@ -10,6 +11,20 @@ const useSlug: FieldHook = ({ operation, siblingData }) => {
   if (operation === 'create' || operation === 'update') {
     return slugify(siblingData?.title);
   }
+};
+
+export const useRevalidateTag: CollectionAfterChangeHook = ({ doc, previousDoc }) => {
+  revalidateTag('pages');
+
+  if (doc._status === 'published') {
+    revalidateTag(`page_${doc.slug}`);
+  }
+
+  if (previousDoc?._status === 'published' && doc._status !== 'published') {
+    revalidateTag(`page_${previousDoc.slug}`);
+  }
+
+  return doc;
 };
 
 export const Pages: CollectionConfig = {
@@ -26,6 +41,9 @@ export const Pages: CollectionConfig = {
     create: hasRole(Role.Admin),
     update: hasRole(Role.Admin),
     delete: hasRole(Role.Admin),
+  },
+  hooks: {
+    afterChange: [useRevalidateTag],
   },
   fields: [
     {

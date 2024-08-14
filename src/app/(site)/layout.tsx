@@ -3,7 +3,9 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 // eslint-disable-next-line import/no-unresolved
 import { GeistSans } from 'geist/font/sans';
 import { Metadata } from 'next';
+import { unstable_cache } from 'next/cache';
 import Script from 'next/script';
+import { GlobalSlug } from 'payload';
 
 import Navigation from '@/components/navigation';
 import { env } from '@/env/client';
@@ -17,9 +19,19 @@ export const metadata: Metadata = {
   description: 'Software Engineer',
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+const fetchGlobal = async (slug: GlobalSlug) => {
   const payload = await getPayloadHMR({ config: payloadConfig });
-  const navigation = await payload.findGlobal({ slug: 'navigation' });
+
+  return await payload.findGlobal({ slug });
+};
+
+const fetchCachedGlobal = (slug: GlobalSlug) =>
+  unstable_cache(fetchGlobal, [slug], {
+    tags: [`global_${slug}`],
+  })(slug);
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const navigation = await fetchCachedGlobal('navigation');
 
   return (
     <html
