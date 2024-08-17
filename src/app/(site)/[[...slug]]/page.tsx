@@ -22,8 +22,6 @@ const fetchPages = async () => {
     pagination: false,
   });
 
-  console.log(pages.docs.map(({ slug }) => ({ slug })));
-
   return pages.docs.map(({ slug }) => ({ slug }));
 };
 
