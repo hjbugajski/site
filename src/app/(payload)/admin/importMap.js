@@ -14,7 +14,6 @@ import { BoldFeatureClient as BoldFeatureClient_12 } from '@payloadcms/richtext-
 import { ItalicFeatureClient as ItalicFeatureClient_13 } from '@payloadcms/richtext-lexical/client'
 import { ParagraphFeatureClient as ParagraphFeatureClient_14 } from '@payloadcms/richtext-lexical/client'
 import { HeadingFeatureClient as HeadingFeatureClient_15 } from '@payloadcms/richtext-lexical/client'
-import { emptyComponent as emptyComponent_16 } from '@payloadcms/ui/shared'
 
 export const importMap = {
   "@payloadcms/richtext-lexical/client#RichTextCell": RichTextCell_0,
@@ -32,6 +31,5 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#BoldFeatureClient": BoldFeatureClient_12,
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_13,
   "@payloadcms/richtext-lexical/client#ParagraphFeatureClient": ParagraphFeatureClient_14,
-  "@payloadcms/richtext-lexical/client#HeadingFeatureClient": HeadingFeatureClient_15,
-  "@payloadcms/ui/shared#emptyComponent": emptyComponent_16
+  "@payloadcms/richtext-lexical/client#HeadingFeatureClient": HeadingFeatureClient_15
 }
