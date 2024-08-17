@@ -13,7 +13,6 @@ import {
 } from '@payloadcms/richtext-lexical';
 import { Block, Field } from 'payload';
 
-import { getRowLabel } from '@/payload/components/row-label/get-row-label';
 import { linkGroup } from '@/payload/fields/link';
 import { deepMerge } from '@/payload/utils/deep-merge';
 
@@ -117,7 +116,14 @@ export const Item: Block = {
       required: true,
       admin: {
         components: {
-          RowLabel: () => getRowLabel('icon', 'Tag'),
+          RowLabel: {
+            path: '@/payload/components/row-label.tsx',
+            exportName: 'RowLabel',
+            clientProps: {
+              path: 'icon',
+              fallback: 'Tag',
+            },
+          },
         },
       },
       fields: [
