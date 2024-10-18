@@ -1,5 +1,4 @@
 import { getPayloadHMR } from '@payloadcms/next/utilities';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 // https://github.com/vercel/geist-font/issues/122
 // eslint-disable-next-line import/no-unresolved
 import { GeistSans } from 'geist/font/sans';
@@ -48,7 +47,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           data-website-id={env.NEXT_PUBLIC_UMAMI_ID}
           data-domains={env.NEXT_PUBLIC_DOMAINS}
         />
-        <SpeedInsights />
       </body>
     </html>
   );
