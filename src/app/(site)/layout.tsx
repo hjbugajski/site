@@ -1,5 +1,6 @@
 import { getPayloadHMR } from '@payloadcms/next/utilities';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+// https://github.com/vercel/geist-font/issues/122
 // eslint-disable-next-line import/no-unresolved
 import { GeistSans } from 'geist/font/sans';
 import { Metadata } from 'next';
@@ -26,9 +27,7 @@ const fetchGlobal = async (slug: GlobalSlug) => {
 };
 
 const fetchCachedGlobal = (slug: GlobalSlug) =>
-  unstable_cache(fetchGlobal, [slug], {
-    tags: [`global_${slug}`],
-  })(slug);
+  unstable_cache(fetchGlobal, [slug], { tags: [`global_${slug}`] })(slug);
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const navigation = await fetchCachedGlobal('navigation');

@@ -37,6 +37,9 @@ export default buildConfig({
     apiKey: env.RESEND_API_KEY,
   }),
   globals: [Navigation],
+  graphQL: {
+    disable: true,
+  },
   onInit: async ({ create, find }) => {
     const users = await find({
       collection: 'users',
