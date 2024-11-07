@@ -1,19 +1,20 @@
 import { BlocksFeature, lexicalEditor } from '@payloadcms/richtext-lexical';
 import { revalidateTag } from 'next/cache';
-import { CollectionAfterChangeHook, CollectionConfig, FieldHook } from 'payload';
+import type { CollectionAfterChangeHook, CollectionConfig, FieldHook } from 'payload';
 
 import { slugify } from '@/lib/utils/slugify';
 import { Role, hasRole, hasRoleOrPublished } from '@/payload/access';
 import { Item } from '@/payload/blocks/item';
 import { Section } from '@/payload/blocks/section';
+import type { Page } from '@/payload/payload-types';
 
-const useSlug: FieldHook = ({ operation, siblingData }) => {
+const useSlug: FieldHook<Page, string | undefined, Page> = ({ operation, siblingData }) => {
   if (operation === 'create' || operation === 'update') {
     return slugify(siblingData?.title);
   }
 };
 
-export const useRevalidateTag: CollectionAfterChangeHook = ({ doc, previousDoc }) => {
+export const useRevalidateTag: CollectionAfterChangeHook<Page> = ({ doc, previousDoc }) => {
   revalidateTag('pages');
 
   if (doc._status === 'published') {

@@ -1,5 +1,5 @@
 import { revalidateTag } from 'next/cache';
-import { GlobalAfterChangeHook, GlobalConfig } from 'payload';
+import type { GlobalAfterChangeHook, GlobalConfig } from 'payload';
 
 import { Role, hasRole } from '@/payload/access';
 import { linkArray } from '@/payload/fields/link';

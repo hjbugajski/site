@@ -7,7 +7,7 @@ import { PayloadLink } from '@/lib/components/payload-link';
 import { Icons } from '@/lib/icons';
 import { cn } from '@/lib/utils/cn';
 import { formatDuration } from '@/lib/utils/duration';
-import { BlockItem as BlockItemType } from '@/payload/payload-types';
+import type { BlockItem as BlockItemType } from '@/payload/payload-types';
 
 export default function BlockItem(props: BlockItemType) {
   const { badge, content, hasBadge, hasLink, heading, link, size, tags } = props;

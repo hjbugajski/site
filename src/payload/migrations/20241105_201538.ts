@@ -1,4 +1,4 @@
-import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
+import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres';
 
 export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
   await payload.db.drizzle.execute(sql`
@@ -217,7 +217,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX IF NOT EXISTS "navigation_links_rel_parent_idx" ON "navigation_links_rel" USING btree ("parent_id");
   CREATE INDEX IF NOT EXISTS "navigation_links_order_idx" ON "navigation_links" USING btree ("_order");
   CREATE INDEX IF NOT EXISTS "navigation_links_parent_id_idx" ON "navigation_links" USING btree ("_parent_id");
-  CREATE INDEX IF NOT EXISTS "navigation_links_page_idx" ON "navigation_links" USING btree ("page_id");`)
+  CREATE INDEX IF NOT EXISTS "navigation_links_page_idx" ON "navigation_links" USING btree ("page_id");`);
 }
 
 export async function down({ payload, req }: MigrateDownArgs): Promise<void> {
@@ -238,5 +238,5 @@ export async function down({ payload, req }: MigrateDownArgs): Promise<void> {
   DROP TYPE "public"."enum__pages_v_version_status";
   DROP TYPE "public"."enum_users_roles";
   DROP TYPE "public"."enum_navigation_links_type";
-  DROP TYPE "public"."enum_navigation_links_rel";`)
+  DROP TYPE "public"."enum_navigation_links_rel";`);
 }

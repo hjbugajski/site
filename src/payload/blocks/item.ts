@@ -11,9 +11,10 @@ import {
   UnorderedListFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical';
-import { Block, Field } from 'payload';
+import type { Block, Field } from 'payload';
 
 import { linkGroup } from '@/payload/fields/link';
+import type { BlockItem } from '@/payload/payload-types';
 import { deepMerge } from '@/payload/utils/deep-merge';
 
 export const Item: Block = {
@@ -48,7 +49,7 @@ export const Item: Block = {
     },
     deepMerge<Field>(linkGroup, {
       admin: {
-        condition: (_, siblingData) => siblingData.hasLink,
+        condition: (_, siblingData: Partial<BlockItem>) => !!siblingData.hasLink,
       },
     }),
     {
@@ -60,7 +61,7 @@ export const Item: Block = {
       name: 'badge',
       type: 'group',
       admin: {
-        condition: (_, siblingData) => siblingData.hasBadge,
+        condition: (_, siblingData: Partial<BlockItem>) => !!siblingData.hasBadge,
       },
       fields: [
         {

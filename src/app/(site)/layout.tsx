@@ -2,10 +2,10 @@ import { getPayloadHMR } from '@payloadcms/next/utilities';
 // https://github.com/vercel/geist-font/issues/122
 // eslint-disable-next-line import/no-unresolved
 import { GeistSans } from 'geist/font/sans';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
 import Script from 'next/script';
-import { GlobalSlug } from 'payload';
+import type { GlobalSlug } from 'payload';
 
 import Navigation from '@/components/navigation';
 import { env } from '@/env/client';

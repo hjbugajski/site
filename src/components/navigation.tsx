@@ -1,5 +1,5 @@
 import { PayloadLink } from '@/lib/components/payload-link';
-import { Navigation as NavigationType } from '@/payload/payload-types';
+import type { Navigation as NavigationType } from '@/payload/payload-types';
 
 export default function Navigation({ links }: NavigationType) {
   return (

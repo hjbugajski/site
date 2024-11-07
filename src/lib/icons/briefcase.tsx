@@ -1,4 +1,5 @@
-import { SVGProps, forwardRef } from 'react';
+import type { SVGProps } from 'react';
+import { forwardRef } from 'react';
 
 export const IconBriefcase = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
   ({ className, ...props }, ref) => (

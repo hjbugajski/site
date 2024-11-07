@@ -2,7 +2,8 @@ import type { Config } from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
 import plugin from 'tailwindcss/plugin';
 
-const utilitiesPlugin = plugin(function ({ addUtilities }) {
+// eslint-disable-next-line @typescript-eslint/unbound-method
+const utilitiesPlugin = plugin(({ addUtilities }) => {
   addUtilities({
     '.font-normal': {
       fontWeight: '400',
