@@ -1,4 +1,4 @@
-import {
+import type {
   BlockItem as BlockItemType,
   BlockSection as BlockSectionType,
 } from '@/payload/payload-types';

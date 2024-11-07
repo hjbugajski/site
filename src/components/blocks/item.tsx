@@ -1,17 +1,13 @@
 import { DateTime } from 'luxon';
-import dynamic from 'next/dynamic';
 
+import ItemDuration from '@/components/blocks/item-duration.client';
 import { Serialize } from '@/components/serialize';
 import { Badge } from '@/lib/components/badge';
 import { PayloadLink } from '@/lib/components/payload-link';
 import { Icons } from '@/lib/icons';
 import { cn } from '@/lib/utils/cn';
 import { formatDuration } from '@/lib/utils/duration';
-import { BlockItem as BlockItemType } from '@/payload/payload-types';
-
-const ItemDuration = dynamic(() => import('@/components/blocks/item-duration.client'), {
-  ssr: false,
-});
+import type { BlockItem as BlockItemType } from '@/payload/payload-types';
 
 export default function BlockItem(props: BlockItemType) {
   const { badge, content, hasBadge, hasLink, heading, link, size, tags } = props;
@@ -43,10 +39,13 @@ export default function BlockItem(props: BlockItemType) {
         <ul className="flex flex-col">
           {tags &&
             tags.map((tag, index) => (
-              <li key={index} className="flex gap-2 font-medium text-gray-text-primary">
+              <li
+                key={index}
+                className="flex items-baseline gap-2 font-medium text-gray-text-primary"
+              >
                 <Icons
                   name={tag.icon}
-                  className={cn('shrink-0', size === 'default' ? 'h-5 w-3' : 'h-6 w-4')}
+                  className={cn('shrink-0', size === 'default' ? 'size-3' : 'size-[0.875rem]')}
                 />
                 {tag.type === 'text' && (
                   <p className={cn(size === 'default' && 'text-sm')}>{tag.text?.join(' • ')}</p>

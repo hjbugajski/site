@@ -1,7 +1,7 @@
-import { LinkProps } from 'next/link';
+import type { LinkProps } from 'next/link';
 
 import { slugify } from '@/lib/utils/slugify';
-import { FieldLinkGroup } from '@/payload/payload-types';
+import type { FieldLinkGroup } from '@/payload/payload-types';
 
 type InternalLinkProps = {
   'data-umami-event'?: string | null;

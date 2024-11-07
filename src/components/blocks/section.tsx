@@ -1,5 +1,5 @@
 import { Serialize } from '@/components/serialize';
-import { BlockSection as BlockSectionType } from '@/payload/payload-types';
+import type { BlockSection as BlockSectionType } from '@/payload/payload-types';
 
 export default function BlockSection(props: BlockSectionType) {
   return (

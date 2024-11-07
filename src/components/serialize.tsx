@@ -1,10 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Fragment } from 'react';
 
 import { Blocks } from '@/components/blocks';
 import { PayloadLink } from '@/lib/components/payload-link';
 import { cn } from '@/lib/utils/cn';
 import { slugify } from '@/lib/utils/slugify';
-import { FieldLinkGroup } from '@/payload/payload-types';
+import type { FieldLinkGroup } from '@/payload/payload-types';
 
 export type SerializeProps = {
   nodes: any[];

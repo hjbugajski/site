@@ -1,9 +1,10 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-import { VariantProps, cva } from 'class-variance-authority';
+import type { VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import Link from 'next/link';
 
-import { FieldLinkGroup } from '@/payload/payload-types';
+import type { FieldLinkGroup } from '@/payload/payload-types';
 
 import { IconArrowUpRightSmall } from '../icons/arrow-up-right-small';
 import { cn } from '../utils/cn';

@@ -1,4 +1,5 @@
-import { SVGProps, forwardRef } from 'react';
+import type { SVGProps } from 'react';
+import { forwardRef } from 'react';
 
 import { IconArrowUpRightSmall } from './arrow-up-right-small';
 import { IconBriefcase } from './briefcase';

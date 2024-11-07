@@ -1,7 +1,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { mongooseAdapter } from '@payloadcms/db-mongodb';
+import { postgresAdapter } from '@payloadcms/db-postgres';
 import { resendAdapter } from '@payloadcms/email-resend';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { buildConfig } from 'payload';
@@ -24,11 +24,12 @@ export default buildConfig({
   collections: [Pages, Users],
   cors: whitelist,
   csrf: whitelist,
-  db: mongooseAdapter({
-    url: env.MONGODB_URL,
-    connectOptions: {
-      dbName: env.MONGODB_DATABASE,
+  db: postgresAdapter({
+    pool: {
+      connectionString: env.POSTGRES_CONNECTION_STRING,
     },
+    migrationDir: path.join(dirname, 'migrations'),
+    idType: 'uuid',
   }),
   editor: lexicalEditor(),
   email: resendAdapter({
@@ -37,6 +38,9 @@ export default buildConfig({
     apiKey: env.RESEND_API_KEY,
   }),
   globals: [Navigation],
+  graphQL: {
+    disable: true,
+  },
   onInit: async ({ create, find }) => {
     const users = await find({
       collection: 'users',

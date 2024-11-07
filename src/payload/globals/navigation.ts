@@ -1,11 +1,11 @@
 import { revalidateTag } from 'next/cache';
-import { GlobalAfterChangeHook, GlobalConfig } from 'payload';
+import type { GlobalAfterChangeHook, GlobalConfig } from 'payload';
 
 import { Role, hasRole } from '@/payload/access';
 import { linkArray } from '@/payload/fields/link';
 
-const useRevalidateTag: GlobalAfterChangeHook = ({ doc }) => {
-  revalidateTag(`global_${doc.slug}`);
+const useRevalidateTag: GlobalAfterChangeHook = ({ doc, global: { slug } }) => {
+  revalidateTag(`global_${slug}`);
 
   return doc;
 };
