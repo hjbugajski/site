@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 const fetchGlobal = async (slug: GlobalSlug) => {
   const payload = await getPayloadHMR({ config: payloadConfig });
 
-  return await payload.findGlobal({ slug });
+  return payload.findGlobal({ slug });
 };
 
 const fetchCachedGlobal = (slug: GlobalSlug) =>
