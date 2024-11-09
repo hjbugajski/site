@@ -1,9 +1,7 @@
 import { getPayloadHMR } from '@payloadcms/next/utilities';
-// https://github.com/vercel/geist-font/issues/122
-// eslint-disable-next-line import/no-unresolved
-import { GeistSans } from 'geist/font/sans';
 import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
+import { Geist } from 'next/font/google';
 import Script from 'next/script';
 import type { GlobalSlug } from 'payload';
 
@@ -13,6 +11,8 @@ import { cn } from '@/lib/utils/cn';
 import payloadConfig from '@payload-config';
 
 import './globals.css';
+
+const geistSans = Geist({ subsets: ['latin'], display: 'swap', variable: '--font-geist-sans' });
 
 export const metadata: Metadata = {
   title: 'Henry Bugajski',
@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html
       lang="en"
       className={cn(
-        GeistSans.variable,
+        geistSans.variable,
         'bg-background font-sans font-normal text-gray-text-secondary font-optical-sizing-auto',
       )}
     >
