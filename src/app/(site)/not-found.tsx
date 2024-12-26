@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <section className="space-y-3">
       <div className="space-y-1">
-        <h1 className="text-2xl font-bold text-gray-text-primary">Page Not Found</h1>
+        <h1 className="text-gray-text-primary text-2xl font-bold">Page Not Found</h1>
         <p className="mx-auto max-w-2xl text-lg">
           We couldn&apos;t find the page you were looking for.
         </p>
@@ -14,7 +14,7 @@ export default function NotFound() {
       <p>
         <Link
           href="/"
-          className="border-b-2 border-b-transparent text-gray-text-primary transition hover:border-gray-text-primary"
+          className="text-gray-text-primary hover:border-gray-text-primary border-b-2 border-b-transparent transition"
         >
           Home
           <IconArrowUpRightSmall className="inline-block size-5" />
