@@ -14,14 +14,17 @@ const badgeVariants = cva(
   {
     variants: {
       color: {
-        gray: 'border-gray-border-default bg-gray-bg-default text-gray-text-secondary',
-        blue: 'border-blue-border-default bg-blue-bg-default text-blue-text-secondary',
-        red: 'border-red-border-default bg-red-bg-default text-red-text-secondary',
-        amber: 'border-amber-border-default bg-amber-bg-default text-amber-text-secondary',
-        green: 'border-green-border-default bg-green-bg-default text-green-text-secondary',
-        teal: 'border-teal-border-default bg-teal-bg-default text-teal-text-secondary',
-        purple: 'border-purple-border-default bg-purple-bg-default text-purple-text-secondary',
-        pink: 'border-pink-border-default bg-pink-bg-default text-pink-text-secondary',
+        gray: 'border-neutral-300 bg-neutral-200 text-neutral-600 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400',
+        blue: 'border-blue-200 bg-blue-100 text-blue-800 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-400',
+        red: 'border-red-200 bg-red-100 text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-400',
+        amber:
+          'border-amber-200 bg-amber-100 text-amber-800 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-500',
+        green:
+          'border-green-200 bg-green-100 text-green-800 dark:border-green-900 dark:bg-green-950 dark:text-green-400',
+        teal: 'border-teal-200 bg-teal-100 text-teal-800 dark:border-teal-900 dark:bg-teal-950 dark:text-teal-400',
+        purple:
+          'border-violet-200 bg-violet-100 text-violet-800 dark:border-violet-900 dark:bg-violet-950 dark:text-violet-400',
+        pink: 'border-pink-200 bg-pink-100 text-pink-800 dark:border-pink-900 dark:bg-pink-950 dark:text-pink-400',
       },
     },
     defaultVariants: {
