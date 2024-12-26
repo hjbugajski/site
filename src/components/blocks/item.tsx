@@ -41,12 +41,22 @@ export function BlockItem(props: PayloadItemBlock) {
             tags.map((tag, index) => (
               <li
                 key={index}
-                className="flex items-center gap-2 font-medium text-neutral-800 dark:text-neutral-200"
+                className={cn(
+                  'grid gap-2 font-medium text-neutral-800 dark:text-neutral-200',
+                  size === 'default' ? 'grid-cols-[0.875rem_1fr]' : 'grid-cols-[1rem_1fr]',
+                )}
               >
-                <Icons
-                  name={tag.icon}
-                  className={cn('shrink-0', size === 'default' ? 'mb-px size-3.5' : 'size-4')}
-                />
+                <div
+                  className={cn(
+                    'flex items-center justify-center',
+                    size === 'default' ? 'h-5' : 'h-6',
+                  )}
+                >
+                  <Icons
+                    name={tag.icon}
+                    className={cn('shrink-0', size === 'default' ? 'size-3.5' : 'size-4')}
+                  />
+                </div>
                 {tag.type === 'text' && (
                   <p className={cn(size === 'default' && 'text-sm')}>{tag.text?.join(' • ')}</p>
                 )}
