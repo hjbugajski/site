@@ -1,5 +1,6 @@
-import type { SVGProps } from 'react';
-import { forwardRef } from 'react';
+import type { ComponentProps } from 'react';
+
+import type { PayloadItemBlock } from '@/payload/payload-types';
 
 import { IconArrowUpRightSmall } from './arrow-up-right-small';
 import { IconBriefcase } from './briefcase';
@@ -8,21 +9,23 @@ import { IconCode } from './code';
 import { IconGlobe } from './globe';
 import { IconServers } from './servers';
 
-const icons = {
-  arrowUpRightSmall: IconArrowUpRightSmall,
-  briefcase: IconBriefcase,
-  clock: IconClock,
-  code: IconCode,
-  globe: IconGlobe,
-  servers: IconServers,
+type Props = ComponentProps<'svg'> & { name: PayloadItemBlock['tags'][number]['icon'] };
+
+export const Icons = ({ name, ...props }: Props) => {
+  switch (name) {
+    case 'arrowUpRightSmall':
+      return <IconArrowUpRightSmall {...props} />;
+    case 'briefcase':
+      return <IconBriefcase {...props} />;
+    case 'clock':
+      return <IconClock {...props} />;
+    case 'code':
+      return <IconCode {...props} />;
+    case 'globe':
+      return <IconGlobe {...props} />;
+    case 'servers':
+      return <IconServers {...props} />;
+    default:
+      return null;
+  }
 };
-
-export const Icons = forwardRef<
-  SVGSVGElement,
-  SVGProps<SVGSVGElement> & { name: keyof typeof icons }
->(({ name, ...props }, ref) => {
-  const RenderIcon = icons[name];
-
-  return RenderIcon ? <RenderIcon ref={ref} {...props} /> : null;
-});
-Icons.displayName = 'Icons';
