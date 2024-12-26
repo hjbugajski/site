@@ -1,7 +1,7 @@
 import type { LinkProps } from 'next/link';
 
 import { slugify } from '@/lib/utils/slugify';
-import type { FieldLinkGroup } from '@/payload/payload-types';
+import type { PayloadLinkGroupField } from '@/payload/payload-types';
 
 type InternalLinkProps = {
   'data-umami-event'?: string | null;
@@ -9,10 +9,10 @@ type InternalLinkProps = {
   'data-umami-event-url'?: string | null;
 };
 
-const getInternalLink = (link: FieldLinkGroup['page']) =>
+const getInternalLink = (link: PayloadLinkGroupField['page']) =>
   typeof link === 'string' ? link : link?.slug;
 
-export const linkProps = (link: FieldLinkGroup): LinkProps & InternalLinkProps => {
+export const linkProps = (link: PayloadLinkGroupField): LinkProps & InternalLinkProps => {
   const href = link.type === 'internal' ? getInternalLink(link.page) : link.url;
 
   return {

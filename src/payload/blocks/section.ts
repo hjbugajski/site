@@ -19,7 +19,7 @@ import { Item } from '@/payload/blocks/item';
 
 export const Section: Block = {
   slug: 'section',
-  interfaceName: 'BlockSection',
+  interfaceName: 'PayloadSectionBlock',
   fields: [
     {
       name: 'content',

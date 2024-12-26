@@ -14,12 +14,12 @@ import {
 import type { Block, Field } from 'payload';
 
 import { linkGroup } from '@/payload/fields/link';
-import type { BlockItem } from '@/payload/payload-types';
+import type { PayloadItemBlock } from '@/payload/payload-types';
 import { deepMerge } from '@/payload/utils/deep-merge';
 
 export const Item: Block = {
   slug: 'item',
-  interfaceName: 'BlockItem',
+  interfaceName: 'PayloadItemBlock',
   fields: [
     {
       name: 'size',
@@ -49,7 +49,7 @@ export const Item: Block = {
     },
     deepMerge<Field>(linkGroup, {
       admin: {
-        condition: (_, siblingData: Partial<BlockItem>) => !!siblingData.hasLink,
+        condition: (_, siblingData: Partial<PayloadItemBlock>) => !!siblingData.hasLink,
       },
     }),
     {
@@ -61,7 +61,7 @@ export const Item: Block = {
       name: 'badge',
       type: 'group',
       admin: {
-        condition: (_, siblingData: Partial<BlockItem>) => !!siblingData.hasBadge,
+        condition: (_, siblingData: Partial<PayloadItemBlock>) => !!siblingData.hasBadge,
       },
       fields: [
         {

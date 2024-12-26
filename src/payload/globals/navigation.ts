@@ -12,6 +12,9 @@ const useRevalidateTag: GlobalAfterChangeHook = ({ doc, global: { slug } }) => {
 
 export const Navigation: GlobalConfig = {
   slug: 'navigation',
+  typescript: {
+    interface: 'PayloadNavigationGlobal',
+  },
   access: {
     read: () => true,
     update: hasRole(Role.Admin),

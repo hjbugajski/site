@@ -1,6 +1,6 @@
 import type { Access, FieldAccess } from 'payload';
 
-import type { User } from '@/payload/payload-types';
+import type { PayloadUsersCollection } from '@/payload/payload-types';
 
 export const Role = {
   Admin: 'admin',
@@ -9,7 +9,7 @@ export const Role = {
 
 export type Role = (typeof Role)[keyof typeof Role];
 
-function roleAccess(user: User | null, roles: Role[]): boolean {
+function roleAccess(user: PayloadUsersCollection | null, roles: Role[]): boolean {
   return roles.some((r) => user?.roles?.includes(r));
 }
 

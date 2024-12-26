@@ -2,8 +2,11 @@ import type { CollectionConfig } from 'payload';
 
 import { Role, hasRole, hasRoleField, hasRoleOrSelf, hasRoleOrSelfField } from '../access';
 
-export const Users: CollectionConfig = {
+export const Users: CollectionConfig<'users'> = {
   slug: 'users',
+  typescript: {
+    interface: 'PayloadUsersCollection',
+  },
   auth: true,
   admin: {
     useAsTitle: 'email',
