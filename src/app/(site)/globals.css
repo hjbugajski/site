@@ -1,216 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-/**
- * Vercel's Geist colors
- *
- * https://vercel.com/geist/colors
- */
-@layer base {
-  :root {
-    /* grays */
-    --ds-gray-100: 0deg 0% 95%;
-    --ds-gray-200: 0deg 0% 92%;
-    --ds-gray-300: 0deg 0% 90%;
-    --ds-gray-400: 0deg 0% 92%;
-    --ds-gray-500: 0deg 0% 79%;
-    --ds-gray-600: 0deg 0% 66%;
-    --ds-gray-700: 0deg 0% 56%;
-    --ds-gray-800: 0deg 0% 49%;
-    --ds-gray-900: 0deg 0% 40%;
-    --ds-gray-1000: 0deg 0% 9%;
+@theme {
+  /* typography */
+  --font-sans: var(--font-host-grotesk);
 
-    /* blues */
-    --ds-blue-100: 212deg 100% 97%;
-    --ds-blue-200: 210deg 100% 96%;
-    --ds-blue-300: 210deg 100% 94%;
-    --ds-blue-400: 209deg 100% 90%;
-    --ds-blue-500: 209deg 100% 80%;
-    --ds-blue-600: 208deg 100% 66%;
-    --ds-blue-700: 212deg 100% 48%;
-    --ds-blue-800: 212deg 100% 41%;
-    --ds-blue-900: 211deg 100% 42%;
-    --ds-blue-1000: 211deg 100% 15%;
+  /* breakpoints */
+  --breakpoint-xs: 425px;
+  --breakpoint-xs-alt: 672px;
+}
 
-    /* reds */
-    --ds-red-100: 0deg 100% 97%;
-    --ds-red-200: 0deg 100% 96%;
-    --ds-red-300: 0deg 100% 95%;
-    --ds-red-400: 0deg 90% 92%;
-    --ds-red-500: 0deg 82% 85%;
-    --ds-red-600: 359deg 90% 71%;
-    --ds-red-700: 358deg 75% 59%;
-    --ds-red-800: 358deg 70% 52%;
-    --ds-red-900: 358deg 66% 48%;
-    --ds-red-1000: 355deg 49% 15%;
+@utility font-optical-sizing-auto {
+  font-optical-sizing: auto;
+}
 
-    /* ambers */
-    --ds-amber-100: 39deg 100% 95%;
-    --ds-amber-200: 44deg 100% 92%;
-    --ds-amber-300: 43deg 96% 90%;
-    --ds-amber-400: 42deg 100% 78%;
-    --ds-amber-500: 38deg 100% 71%;
-    --ds-amber-600: 36deg 90% 62%;
-    --ds-amber-700: 39deg 100% 57%;
-    --ds-amber-800: 35deg 100% 52%;
-    --ds-amber-900: 30deg 100% 32%;
-    --ds-amber-1000: 20deg 79% 17%;
+@utility font-normal {
+  font-variation-settings: 'wght' 400;
+}
 
-    /* greens */
-    --ds-green-100: 120deg 60% 96%;
-    --ds-green-200: 120deg 60% 95%;
-    --ds-green-300: 120deg 60% 91%;
-    --ds-green-400: 122deg 60% 86%;
-    --ds-green-500: 124deg 60% 75%;
-    --ds-green-600: 125deg 60% 64%;
-    --ds-green-700: 131deg 41% 46%;
-    --ds-green-800: 132deg 43% 39%;
-    --ds-green-900: 133deg 50% 32%;
-    --ds-green-1000: 128deg 29% 15%;
+@utility font-medium {
+  font-variation-settings: 'wght' 500;
+}
 
-    /* teals */
-    --ds-teal-100: 169deg 70% 96%;
-    --ds-teal-200: 167deg 70% 94%;
-    --ds-teal-300: 168deg 70% 90%;
-    --ds-teal-400: 170deg 70% 85%;
-    --ds-teal-500: 170deg 70% 72%;
-    --ds-teal-600: 170deg 70% 57%;
-    --ds-teal-700: 173deg 80% 36%;
-    --ds-teal-800: 173deg 83% 30%;
-    --ds-teal-900: 174deg 91% 25%;
-    --ds-teal-1000: 171deg 80% 13%;
+@utility font-semibold {
+  font-variation-settings: 'wght' 600;
+}
 
-    /* purples */
-    --ds-purple-100: 276deg 100% 97%;
-    --ds-purple-200: 277deg 87% 97%;
-    --ds-purple-300: 274deg 78% 95%;
-    --ds-purple-400: 276deg 71% 92%;
-    --ds-purple-500: 274deg 70% 82%;
-    --ds-purple-600: 273deg 72% 73%;
-    --ds-purple-700: 272deg 51% 54%;
-    --ds-purple-800: 272deg 47% 45%;
-    --ds-purple-900: 274deg 71% 43%;
-    --ds-purple-1000: 276deg 100% 15%;
-
-    /* pinks */
-    --ds-pink-100: 330deg 100% 96%;
-    --ds-pink-200: 340deg 90% 96%;
-    --ds-pink-300: 340deg 82% 94%;
-    --ds-pink-400: 341deg 76% 91%;
-    --ds-pink-500: 340deg 75% 84%;
-    --ds-pink-600: 341deg 75% 73%;
-    --ds-pink-700: 336deg 80% 58%;
-    --ds-pink-800: 336deg 74% 51%;
-    --ds-pink-900: 336deg 65% 45%;
-    --ds-pink-1000: 333deg 74% 15%;
-
-    /* backgrounds */
-    --ds-background-100: 0deg 0% 100%;
-    --ds-background-200: 0deg 0% 98%;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      /* grays */
-      --ds-gray-100: 0deg 0% 10%;
-      --ds-gray-200: 0deg 0% 12%;
-      --ds-gray-300: 0deg 0% 16%;
-      --ds-gray-400: 0deg 0% 18%;
-      --ds-gray-500: 0deg 0% 27%;
-      --ds-gray-600: 0deg 0% 53%;
-      --ds-gray-700: 0deg 0% 56%;
-      --ds-gray-800: 0deg 0% 49%;
-      --ds-gray-900: 0deg 0% 63%;
-      --ds-gray-1000: 0deg 0% 93%;
-
-      /* blues */
-      --ds-blue-100: 216deg 50% 12%;
-      --ds-blue-200: 214deg 59% 15%;
-      --ds-blue-300: 213deg 71% 20%;
-      --ds-blue-400: 212deg 78% 23%;
-      --ds-blue-500: 211deg 86% 27%;
-      --ds-blue-600: 206deg 100% 50%;
-      --ds-blue-700: 212deg 100% 48%;
-      --ds-blue-800: 212deg 100% 41%;
-      --ds-blue-900: 210deg 100% 66%;
-      --ds-blue-1000: 206deg 100% 96%;
-
-      /* reds */
-      --ds-red-100: 357deg 37% 12%;
-      --ds-red-200: 357deg 46% 16%;
-      --ds-red-300: 356deg 54% 22%;
-      --ds-red-400: 357deg 55% 26%;
-      --ds-red-500: 357deg 60% 32%;
-      --ds-red-600: 358deg 75% 59%;
-      --ds-red-700: 358deg 75% 59%;
-      --ds-red-800: 358deg 69% 52%;
-      --ds-red-900: 358deg 100% 69%;
-      --ds-red-1000: 353deg 90% 96%;
-
-      /* ambers */
-      --ds-amber-100: 35deg 100% 8%;
-      --ds-amber-200: 32deg 100% 10%;
-      --ds-amber-300: 33deg 100% 15%;
-      --ds-amber-400: 35deg 100% 17%;
-      --ds-amber-500: 35deg 91% 22%;
-      --ds-amber-600: 39deg 85% 49%;
-      --ds-amber-700: 39deg 100% 57%;
-      --ds-amber-800: 35deg 100% 52%;
-      --ds-amber-900: 35deg 100% 52%;
-      --ds-amber-1000: 40deg 94% 93%;
-
-      /* greens */
-      --ds-green-100: 136deg 50% 9%;
-      --ds-green-200: 137deg 50% 12%;
-      --ds-green-300: 136deg 50% 14%;
-      --ds-green-400: 135deg 70% 16%;
-      --ds-green-500: 135deg 70% 23%;
-      --ds-green-600: 135deg 70% 34%;
-      --ds-green-700: 131deg 41% 46%;
-      --ds-green-800: 132deg 43% 39%;
-      --ds-green-900: 131deg 43% 57%;
-      --ds-green-1000: 136deg 73% 94%;
-
-      /* teals */
-      --ds-teal-100: 169deg 78% 7%;
-      --ds-teal-200: 170deg 74% 9%;
-      --ds-teal-300: 171deg 75% 13%;
-      --ds-teal-400: 171deg 85% 13%;
-      --ds-teal-500: 172deg 85% 20%;
-      --ds-teal-600: 172deg 85% 32%;
-      --ds-teal-700: 173deg 80% 36%;
-      --ds-teal-800: 173deg 83% 30%;
-      --ds-teal-900: 174deg 90% 41%;
-      --ds-teal-1000: 166deg 71% 93%;
-
-      /* purples */
-      --ds-purple-100: 283deg 30% 12%;
-      --ds-purple-200: 281deg 38% 16%;
-      --ds-purple-300: 279deg 44% 23%;
-      --ds-purple-400: 277deg 46% 28%;
-      --ds-purple-500: 274deg 49% 35%;
-      --ds-purple-600: 272deg 51% 54%;
-      --ds-purple-700: 272deg 51% 54%;
-      --ds-purple-800: 272deg 47% 45%;
-      --ds-purple-900: 275deg 80% 71%;
-      --ds-purple-1000: 281deg 73% 96%;
-
-      /* pinks */
-      --ds-pink-100: 335deg 32% 12%;
-      --ds-pink-200: 335deg 43% 16%;
-      --ds-pink-300: 335deg 47% 21%;
-      --ds-pink-400: 335deg 51% 22%;
-      --ds-pink-500: 335deg 57% 27%;
-      --ds-pink-600: 336deg 75% 40%;
-      --ds-pink-700: 336deg 80% 58%;
-      --ds-pink-800: 336deg 74% 51%;
-      --ds-pink-900: 341deg 90% 67%;
-      --ds-pink-1000: 333deg 90% 96%;
-
-      /* backgrounds */
-      --ds-background-100: 0deg 0% 4%;
-      --ds-background-200: 0deg 0% 0%;
-    }
-  }
+@utility font-bold {
+  font-variation-settings: 'wght' 700;
 }

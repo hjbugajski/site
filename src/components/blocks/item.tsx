@@ -19,11 +19,11 @@ export function BlockItem(props: PayloadItemBlock) {
   return (
     <div className="my-5 space-y-2 first:mt-0 last:mb-0">
       <div className="space-y-1">
-        <div className="flex w-full items-center justify-between gap-x-4 gap-y-1 xs:flex-row xs:justify-normal xs:gap-x-2">
+        <div className="xs:flex-row xs:justify-normal xs:gap-x-2 flex w-full items-center justify-between gap-x-4 gap-y-1">
           <h1
             className={cn(
-              'font-bold text-gray-text-primary',
-              size === 'default' ? 'text-xl' : 'text-2xl',
+              'flex items-center font-bold text-neutral-800 dark:text-neutral-200',
+              size === 'default' ? 'text-3xl' : 'text-2xl',
             )}
           >
             {hasLink && link ? (
@@ -41,11 +41,11 @@ export function BlockItem(props: PayloadItemBlock) {
             tags.map((tag, index) => (
               <li
                 key={index}
-                className="flex items-baseline gap-2 font-medium text-gray-text-primary"
+                className="flex items-center gap-2 font-medium text-neutral-800 dark:text-neutral-200"
               >
                 <Icons
                   name={tag.icon}
-                  className={cn('shrink-0', size === 'default' ? 'size-3' : 'size-[0.875rem]')}
+                  className={cn('shrink-0', size === 'default' ? 'mb-px size-3.5' : 'size-4')}
                 />
                 {tag.type === 'text' && (
                   <p className={cn(size === 'default' && 'text-sm')}>{tag.text?.join(' • ')}</p>

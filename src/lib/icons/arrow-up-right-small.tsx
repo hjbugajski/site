@@ -1,12 +1,19 @@
 import type { ComponentProps } from 'react';
 
 export const IconArrowUpRightSmall = (props: ComponentProps<'svg'>) => (
-  <svg strokeLinejoin="round" viewBox="0 0 16 16" {...props}>
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M6.75011 4H6.00011V5.5H6.75011H9.43945L5.46978 9.46967L4.93945 10L6.00011 11.0607L6.53044 10.5303L10.499 6.56182V9.25V10H11.999V9.25V5C11.999 4.44772 11.5512 4 10.999 4H6.75011Z"
-      fill="currentColor"
-    ></path>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M7 7h10v10" />
+    <path d="M7 17 17 7" />
   </svg>
 );

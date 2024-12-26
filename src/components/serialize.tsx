@@ -17,7 +17,11 @@ export type SerializeProps = {
 const renderText = (node: any) => {
   switch (node.format) {
     case 1: // bold
-      return <strong className="font-semibold text-gray-text-primary">{node.text}</strong>;
+      return (
+        <strong className="font-semibold text-neutral-800 dark:text-neutral-200">
+          {node.text}
+        </strong>
+      );
     case 1 << 1: // italic
       return <em>{node.text}</em>;
     case 1 << 2: // strikethrough
@@ -69,7 +73,7 @@ export function Serialize({ nodes }: SerializeProps) {
                 key={i}
                 id={slugify(node.children?.map((v: any) => v.text).join(' '))}
                 className={cn(
-                  'font-bold text-gray-text-primary first:mt-0 last:mb-0',
+                  'font-bold text-neutral-800 first:mt-0 last:mb-0 dark:text-neutral-200',
                   alignClass,
                   indentClass,
                   // @ts-expect-error – valid keys
