@@ -18,5 +18,6 @@ export default {
     ],
     'no-descending-specificity': null,
     'selector-class-pattern': null,
+    'import-notation': null,
   },
 };
