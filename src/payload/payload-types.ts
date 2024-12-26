@@ -56,9 +56,9 @@ export interface Config {
   user: User & {
     collection: 'users';
   };
-  jobs?: {
+  jobs: {
     tasks: unknown;
-    workflows?: unknown;
+    workflows: unknown;
   };
 }
 export interface UserAuthOperations {
@@ -258,22 +258,25 @@ export interface Navigation {
  * via the `definition` "navigation_select".
  */
 export interface NavigationSelect<T extends boolean = true> {
-  links?:
-    | T
-    | {
-        text?: T;
-        type?: T;
-        page?: T;
-        url?: T;
-        rel?: T;
-        newTab?: T;
-        umamiEvent?: T;
-        umamiEventId?: T;
-        id?: T;
-      };
+  links?: T | FieldLinkArraySelect<T>;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FieldLinkArray_select".
+ */
+export interface FieldLinkArraySelect<T extends boolean = true> {
+  text?: T;
+  type?: T;
+  page?: T;
+  url?: T;
+  rel?: T;
+  newTab?: T;
+  umamiEvent?: T;
+  umamiEventId?: T;
+  id?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
