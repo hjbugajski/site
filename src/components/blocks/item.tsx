@@ -1,15 +1,15 @@
 import { DateTime } from 'luxon';
 
-import ItemDuration from '@/components/blocks/item-duration.client';
+import { ItemDuration } from '@/components/blocks/item-duration.client';
 import { Serialize } from '@/components/serialize';
 import { Badge } from '@/lib/components/badge';
 import { PayloadLink } from '@/lib/components/payload-link';
 import { Icons } from '@/lib/icons';
 import { cn } from '@/lib/utils/cn';
 import { formatDuration } from '@/lib/utils/duration';
-import type { BlockItem as BlockItemType } from '@/payload/payload-types';
+import type { PayloadItemBlock } from '@/payload/payload-types';
 
-export default function BlockItem(props: BlockItemType) {
+export function BlockItem(props: PayloadItemBlock) {
   const { badge, content, hasBadge, hasLink, heading, link, size, tags } = props;
 
   function formatDate(date: string) {

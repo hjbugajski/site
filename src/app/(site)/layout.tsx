@@ -1,14 +1,13 @@
-import { getPayloadHMR } from '@payloadcms/next/utilities';
 import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
 import { Geist } from 'next/font/google';
 import Script from 'next/script';
-import type { GlobalSlug } from 'payload';
+import { type GlobalSlug, getPayload } from 'payload';
 
-import Navigation from '@/components/navigation';
+import { Navigation } from '@/components/navigation';
 import { env } from '@/env/client';
 import { cn } from '@/lib/utils/cn';
-import payloadConfig from '@payload-config';
+import config from '@payload-config';
 
 import './globals.css';
 
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 const fetchGlobal = async (slug: GlobalSlug) => {
-  const payload = await getPayloadHMR({ config: payloadConfig });
+  const payload = await getPayload({ config });
 
   return payload.findGlobal({ slug });
 };

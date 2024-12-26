@@ -8,13 +8,13 @@
 
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FieldLinkArray".
+ * via the `definition` "PayloadLinkArrayField".
  */
-export type FieldLinkArray =
+export type PayloadLinkArrayField =
   | {
       text: string;
       type: 'internal' | 'external';
-      page?: (string | null) | Page;
+      page?: (string | null) | PayloadPagesCollection;
       url?: string | null;
       rel?: ('noopener' | 'noreferrer' | 'nofollow')[] | null;
       newTab?: boolean | null;
@@ -29,8 +29,8 @@ export interface Config {
     users: UserAuthOperations;
   };
   collections: {
-    pages: Page;
-    users: User;
+    pages: PayloadPagesCollection;
+    users: PayloadUsersCollection;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -47,18 +47,18 @@ export interface Config {
     defaultIDType: string;
   };
   globals: {
-    navigation: Navigation;
+    navigation: PayloadNavigationGlobal;
   };
   globalsSelect: {
     navigation: NavigationSelect<false> | NavigationSelect<true>;
   };
   locale: null;
-  user: User & {
+  user: PayloadUsersCollection & {
     collection: 'users';
   };
-  jobs?: {
+  jobs: {
     tasks: unknown;
-    workflows?: unknown;
+    workflows: unknown;
   };
 }
 export interface UserAuthOperations {
@@ -83,7 +83,7 @@ export interface UserAuthOperations {
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
-export interface Page {
+export interface PayloadPagesCollection {
   id: string;
   title: string;
   description: string;
@@ -111,7 +111,7 @@ export interface Page {
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
-export interface User {
+export interface PayloadUsersCollection {
   id: string;
   roles: ('admin' | 'public')[];
   updatedAt: string;
@@ -134,16 +134,16 @@ export interface PayloadLockedDocument {
   document?:
     | ({
         relationTo: 'pages';
-        value: string | Page;
+        value: string | PayloadPagesCollection;
       } | null)
     | ({
         relationTo: 'users';
-        value: string | User;
+        value: string | PayloadUsersCollection;
       } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: string | PayloadUsersCollection;
   };
   updatedAt: string;
   createdAt: string;
@@ -156,7 +156,7 @@ export interface PayloadPreference {
   id: string;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: string | PayloadUsersCollection;
   };
   key?: string | null;
   value?:
@@ -247,9 +247,9 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "navigation".
  */
-export interface Navigation {
+export interface PayloadNavigationGlobal {
   id: string;
-  links?: FieldLinkArray;
+  links?: PayloadLinkArrayField;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -258,31 +258,34 @@ export interface Navigation {
  * via the `definition` "navigation_select".
  */
 export interface NavigationSelect<T extends boolean = true> {
-  links?:
-    | T
-    | {
-        text?: T;
-        type?: T;
-        page?: T;
-        url?: T;
-        rel?: T;
-        newTab?: T;
-        umamiEvent?: T;
-        umamiEventId?: T;
-        id?: T;
-      };
+  links?: T | PayloadLinkArrayFieldSelect<T>;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FieldLinkGroup".
+ * via the `definition` "PayloadLinkArrayField_select".
  */
-export interface FieldLinkGroup {
+export interface PayloadLinkArrayFieldSelect<T extends boolean = true> {
+  text?: T;
+  type?: T;
+  page?: T;
+  url?: T;
+  rel?: T;
+  newTab?: T;
+  umamiEvent?: T;
+  umamiEventId?: T;
+  id?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PayloadLinkGroupField".
+ */
+export interface PayloadLinkGroupField {
   text: string;
   type: 'internal' | 'external';
-  page?: (string | null) | Page;
+  page?: (string | null) | PayloadPagesCollection;
   url?: string | null;
   rel?: ('noopener' | 'noreferrer' | 'nofollow')[] | null;
   newTab?: boolean | null;
@@ -292,13 +295,13 @@ export interface FieldLinkGroup {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "BlockItem".
+ * via the `definition` "PayloadItemBlock".
  */
-export interface BlockItem {
+export interface PayloadItemBlock {
   size: 'default' | 'large';
   heading: string;
   hasLink?: boolean | null;
-  link?: FieldLinkGroup;
+  link?: PayloadLinkGroupField;
   hasBadge?: boolean | null;
   badge?: {
     text: string;
@@ -336,9 +339,9 @@ export interface BlockItem {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "BlockSection".
+ * via the `definition` "PayloadSectionBlock".
  */
-export interface BlockSection {
+export interface PayloadSectionBlock {
   content?: {
     root: {
       type: string;

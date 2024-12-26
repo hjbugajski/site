@@ -8,7 +8,7 @@ import { Blocks } from '@/components/blocks';
 import { PayloadLink } from '@/lib/components/payload-link';
 import { cn } from '@/lib/utils/cn';
 import { slugify } from '@/lib/utils/slugify';
-import type { FieldLinkGroup } from '@/payload/payload-types';
+import type { PayloadLinkGroupField } from '@/payload/payload-types';
 
 export type SerializeProps = {
   nodes: any[];
@@ -87,7 +87,7 @@ export function Serialize({ nodes }: SerializeProps) {
             ) : null;
           case 'link': {
             const { fields } = node;
-            const link: FieldLinkGroup = {
+            const link: PayloadLinkGroupField = {
               text: '',
               type: fields.linkType === 'custom' ? 'external' : 'internal',
               page: fields.doc,

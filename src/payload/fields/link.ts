@@ -89,13 +89,14 @@ const fields: Field[] = [
 
 export const linkGroup: Field = {
   name: 'link',
+  interfaceName: 'PayloadLinkGroupField',
   type: 'group',
-  interfaceName: 'FieldLinkGroup',
   fields,
 };
 
 export const linkArray: Field = {
   name: 'links',
+  interfaceName: 'PayloadLinkArrayField',
   type: 'array',
   admin: {
     components: {
@@ -109,6 +110,5 @@ export const linkArray: Field = {
       },
     },
   },
-  interfaceName: 'FieldLinkArray',
   fields,
 };
