@@ -11,7 +11,7 @@ import { cn } from '../utils/cn';
 import { linkProps } from '../utils/link';
 
 const linkVariants = cva(
-  'border-b-2 border-b-transparent transition text-neutral-800 hover:border-neutral-800 dark:text-neutral-200 dark:hover:border-neutral-200',
+  'border-b-2 border-b-transparent inline-flex text-black items-center gap-1 transition hover:border-black dark:text-base-200 hover:dark:border-base-200',
   {
     variants: {
       size: {

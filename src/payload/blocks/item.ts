@@ -76,36 +76,40 @@ export const Item: Block = {
           required: true,
           options: [
             {
-              label: 'Gray',
-              value: 'gray',
-            },
-            {
-              label: 'Blue',
-              value: 'blue',
+              label: 'Base',
+              value: 'base',
             },
             {
               label: 'Red',
               value: 'red',
             },
             {
-              label: 'Amber',
-              value: 'amber',
+              label: 'Orange',
+              value: 'orange',
+            },
+            {
+              label: 'Yellow',
+              value: 'yellow',
             },
             {
               label: 'Green',
               value: 'green',
             },
             {
-              label: 'Teal',
-              value: 'teal',
+              label: 'Cyan',
+              value: 'cyan',
+            },
+            {
+              label: 'Blue',
+              value: 'blue',
             },
             {
               label: 'Purple',
               value: 'purple',
             },
             {
-              label: 'Pink',
-              value: 'pink',
+              label: 'Magenta',
+              value: 'magenta',
             },
           ],
         },
@@ -133,6 +137,10 @@ export const Item: Block = {
           type: 'select',
           required: true,
           options: [
+            {
+              label: 'Arrow Right',
+              value: 'arrowRight',
+            },
             {
               label: 'Arrow Up Right Small',
               value: 'arrowUpRightSmall',

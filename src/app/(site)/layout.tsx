@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
-import { Host_Grotesk } from 'next/font/google';
+import { Inter_Tight } from 'next/font/google';
 import Script from 'next/script';
 import { type GlobalSlug, getPayload } from 'payload';
 
@@ -11,11 +11,11 @@ import config from '@payload-config';
 
 import './globals.css';
 
-const hostGrotesk = Host_Grotesk({
+const interTight = Inter_Tight({
   subsets: ['latin'],
   weight: 'variable',
   display: 'swap',
-  variable: '--font-host-grotesk',
+  variable: '--font-inter-tight',
 });
 
 export const metadata: Metadata = {
@@ -39,8 +39,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html
       lang="en"
       className={cn(
-        hostGrotesk.variable,
-        'font-optical-sizing-auto bg-neutral-100 font-sans font-normal text-neutral-600 dark:bg-neutral-900 dark:text-neutral-400',
+        interTight.variable,
+        'font-optical-sizing-auto bg-paper dark:text-base-500 text-base-600 font-sans font-normal dark:bg-black',
       )}
     >
       <body>
