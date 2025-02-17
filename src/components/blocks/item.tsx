@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 
 import { ItemDuration } from '@/components/blocks/item-duration.client';
-import { Serialize } from '@/components/serialize';
+import { RichText } from '@/components/rich-text';
 import { Badge } from '@/lib/components/badge';
 import { PayloadLink } from '@/lib/components/payload-link';
 import { Icons } from '@/lib/icons';
@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils/cn';
 import { formatDuration } from '@/lib/utils/duration';
 import type { PayloadItemBlock } from '@/payload/payload-types';
 
-export function BlockItem(props: PayloadItemBlock) {
+export function ItemBlock(props: PayloadItemBlock) {
   const { badge, content, hasBadge, hasLink, heading, link, size, tags } = props;
 
   function formatDate(date: string) {
@@ -69,7 +69,7 @@ export function BlockItem(props: PayloadItemBlock) {
           ))}
         </ul>
       </div>
-      {content?.root?.children ? <Serialize nodes={content.root.children} /> : null}
+      <RichText content={content} />
     </div>
   );
 }
