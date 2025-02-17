@@ -1,5 +1,6 @@
 import type { ComponentProps } from 'react';
 
+import { IconArrowRight } from '@/lib/icons/arrow-right';
 import type { PayloadItemBlock } from '@/payload/payload-types';
 
 import { IconArrowUpRightSmall } from './arrow-up-right-small';
@@ -13,6 +14,8 @@ type Props = ComponentProps<'svg'> & { name: PayloadItemBlock['tags'][number]['i
 
 export const Icons = ({ name, ...props }: Props) => {
   switch (name) {
+    case 'arrowRight':
+      return <IconArrowRight {...props} />;
     case 'arrowUpRightSmall':
       return <IconArrowUpRightSmall {...props} />;
     case 'briefcase':
