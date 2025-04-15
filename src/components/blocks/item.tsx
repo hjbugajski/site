@@ -2,8 +2,8 @@ import { DateTime } from 'luxon';
 
 import { ItemDuration } from '@/components/blocks/item-duration.client';
 import { RichText } from '@/components/rich-text';
-import { Badge } from '@/lib/components/badge';
-import { PayloadLink } from '@/lib/components/payload-link';
+import { Badge } from '@/components/ui/badge';
+import { PayloadLink } from '@/components/ui/payload-link';
 import { Icons } from '@/lib/icons';
 import { cn } from '@/lib/utils/cn';
 import { formatDuration } from '@/lib/utils/duration';
