@@ -5,9 +5,9 @@ import { cva } from 'class-variance-authority';
 import Link from 'next/link';
 
 import { IconArrowUpRightSmall } from '@/icons/arrow-up-right-small';
-import { cn } from '@/lib/utils/cn';
-import { linkProps } from '@/lib/utils/link';
 import type { PayloadLinkGroupField } from '@/payload/payload-types';
+import { cn } from '@/utils/cn';
+import { linkProps } from '@/utils/link';
 
 const linkVariants = cva(
   'border-b-2 border-b-transparent inline-flex text-black items-center gap-1 transition hover:border-black dark:text-base-200 hover:dark:border-base-200',

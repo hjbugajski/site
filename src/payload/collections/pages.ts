@@ -7,12 +7,12 @@ import type {
   FieldHook,
 } from 'payload';
 
-import { slugify } from '@/lib/utils/slugify';
 import { Role, hasRole, hasRoleOrPublished } from '@/payload/access';
 import { Item } from '@/payload/blocks/item';
 import { Section } from '@/payload/blocks/section';
 import type { PayloadPagesCollection } from '@/payload/payload-types';
 import { generatePreviewPath } from '@/payload/utils/generate-preview-path';
+import { slugify } from '@/utils/slugify';
 
 const useSlug: FieldHook<PayloadPagesCollection, string | undefined, PayloadPagesCollection> = ({
   operation,

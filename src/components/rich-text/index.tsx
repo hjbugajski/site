@@ -25,8 +25,8 @@ import { listConverter } from '@/components/rich-text/list-converter';
 import { listitemConverter } from '@/components/rich-text/listitem-converter';
 import { paragraphConverter } from '@/components/rich-text/paragraph-converter';
 import { textConverter } from '@/components/rich-text/text-converter';
-import { cn } from '@/lib/utils/cn';
 import type { PayloadItemBlock, PayloadSectionBlock } from '@/payload/payload-types';
+import { cn } from '@/utils/cn';
 
 export type JSXConverter<
   T extends {

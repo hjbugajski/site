@@ -3,7 +3,7 @@ import type { ComponentProps } from 'react';
 import type { VariantProps } from 'class-variance-authority';
 import { cva } from 'class-variance-authority';
 
-import { cn } from '@/lib/utils/cn';
+import { cn } from '@/utils/cn';
 
 export type BadgeProps = {
   color: 'gray' | 'blue' | 'red' | 'orange' | 'green' | 'cyan' | 'purple' | 'magenta';

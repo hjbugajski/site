@@ -5,9 +5,9 @@ import { RichText } from '@/components/rich-text';
 import { Badge } from '@/components/ui/badge';
 import { PayloadLink } from '@/components/ui/payload-link';
 import { Icons } from '@/icons';
-import { cn } from '@/lib/utils/cn';
-import { formatDuration } from '@/lib/utils/duration';
 import type { PayloadItemBlock } from '@/payload/payload-types';
+import { cn } from '@/utils/cn';
+import { formatDuration } from '@/utils/duration';
 
 export function ItemBlock(props: PayloadItemBlock) {
   const { badge, content, hasBadge, hasLink, heading, link, size, tags } = props;

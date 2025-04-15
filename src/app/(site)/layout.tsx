@@ -6,7 +6,7 @@ import { type GlobalSlug, getPayload } from 'payload';
 
 import { Navigation } from '@/components/navigation';
 import { env } from '@/env/client';
-import { cn } from '@/lib/utils/cn';
+import { cn } from '@/utils/cn';
 import config from '@payload-config';
 
 import './globals.css';
