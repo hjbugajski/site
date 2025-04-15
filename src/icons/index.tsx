@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react';
 
-import { IconArrowRight } from '@/lib/icons/arrow-right';
+import { IconArrowRight } from '@/icons/arrow-right';
 import type { PayloadItemBlock } from '@/payload/payload-types';
 
 import { IconArrowUpRightSmall } from './arrow-up-right-small';

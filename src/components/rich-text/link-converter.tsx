@@ -2,8 +2,8 @@ import type { SerializedLinkNode } from '@payloadcms/richtext-lexical';
 import Link from 'next/link';
 
 import type { JSXConverter } from '@/components/rich-text';
-import { IconArrowRight } from '@/lib/icons/arrow-right';
-import { IconArrowUpRightSmall } from '@/lib/icons/arrow-up-right-small';
+import { IconArrowRight } from '@/icons/arrow-right';
+import { IconArrowUpRightSmall } from '@/icons/arrow-up-right-small';
 import { cn } from '@/lib/utils/cn';
 import { linkProps } from '@/lib/utils/link';
 import type { PayloadLinkGroupField } from '@/payload/payload-types';

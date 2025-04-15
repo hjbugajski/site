@@ -4,7 +4,7 @@ import type { VariantProps } from 'class-variance-authority';
 import { cva } from 'class-variance-authority';
 import Link from 'next/link';
 
-import { IconArrowUpRightSmall } from '@/lib/icons/arrow-up-right-small';
+import { IconArrowUpRightSmall } from '@/icons/arrow-up-right-small';
 import { cn } from '@/lib/utils/cn';
 import { linkProps } from '@/lib/utils/link';
 import type { PayloadLinkGroupField } from '@/payload/payload-types';
