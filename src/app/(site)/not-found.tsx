@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { IconArrowRight } from '@/lib/icons/arrow-right';
+import { IconArrowRight } from '@/icons/arrow-right';
 
 export default function NotFound() {
   return (

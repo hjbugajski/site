@@ -1,4 +1,4 @@
-import { PayloadLink } from '@/lib/components/payload-link';
+import { PayloadLink } from '@/components/ui/payload-link';
 import type { PayloadNavigationGlobal } from '@/payload/payload-types';
 
 export function Navigation({ links }: PayloadNavigationGlobal) {
