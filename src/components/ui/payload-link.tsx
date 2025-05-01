@@ -10,12 +10,12 @@ import { cn } from '@/utils/cn';
 import { linkProps } from '@/utils/link';
 
 const linkVariants = cva(
-  'border-b-2 border-b-transparent inline-flex text-black items-center gap-1 transition hover:border-black dark:text-base-200 hover:dark:border-base-200',
+  'inline-flex items-center gap-1 border-b-2 border-b-transparent text-neutral-800 transition hover:border-neutral-800 dark:text-neutral-300 hover:dark:border-neutral-300',
   {
     variants: {
       size: {
         sm: 'text-sm',
-        md: 'text-base',
+        md: 'text-neutral',
         lg: 'text-lg',
       },
     },
@@ -28,9 +28,9 @@ const linkVariants = cva(
 const iconVariants = cva('inline-block', {
   variants: {
     size: {
-      sm: 'size-4',
-      md: 'size-5',
-      lg: 'size-6',
+      sm: 'mb-[3.5px] size-3.5',
+      md: 'mb-1 size-4.5',
+      lg: 'mb-1.25 size-5.5',
     },
   },
   defaultVariants: {
@@ -44,9 +44,12 @@ export interface PayloadLinkProps extends PayloadLinkGroupField, VariantProps<ty
 }
 
 const PayloadLink = ({ children, className, size, ...link }: PayloadLinkProps) => (
-  <Link {...linkProps(link)} className={cn(linkVariants({ size }), className)}>
+  <Link
+    {...linkProps(link)}
+    className={cn(linkVariants({ size }), className, 'mb mb-1 inline-flex items-end')}
+  >
     {children}
-    <IconArrowUpRightSmall className={iconVariants({ size })} />
+    <IconArrowUpRightSmall className={cn(iconVariants({ size }))} />
   </Link>
 );
 

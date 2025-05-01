@@ -2,7 +2,6 @@ import { DateTime } from 'luxon';
 
 import { ItemDuration } from '@/components/blocks/item-duration.client';
 import { RichText } from '@/components/rich-text';
-import { Badge } from '@/components/ui/badge';
 import { PayloadLink } from '@/components/ui/payload-link';
 import { Icons } from '@/icons';
 import type { PayloadItemBlock } from '@/payload/payload-types';
@@ -10,7 +9,7 @@ import { cn } from '@/utils/cn';
 import { formatDuration } from '@/utils/duration';
 
 export function ItemBlock(props: PayloadItemBlock) {
-  const { badge, content, hasBadge, hasLink, heading, link, size, tags } = props;
+  const { content, hasLink, heading, link, size, tags } = props;
 
   function formatDate(date: string) {
     return DateTime.fromISO(date).toLocaleString({ month: 'short', year: 'numeric' });
@@ -18,25 +17,22 @@ export function ItemBlock(props: PayloadItemBlock) {
 
   return (
     <div className="my-5 space-y-2 first:mt-0 last:mb-0">
-      <div className="space-y-1">
-        <div className="xs:flex-row xs:justify-normal xs:gap-x-2 flex w-full items-center justify-between gap-x-4 gap-y-1">
-          <h1 className={cn('flex items-center', size === 'default' ? 'text-3xl' : 'text-2xl')}>
-            {hasLink && link ? (
-              <PayloadLink {...link} className={cn(size === 'default' ? 'text-xl' : 'text-2xl')}>
-                {link.text}
-              </PayloadLink>
-            ) : (
-              heading
-            )}
-          </h1>
-          {hasBadge && badge ? <Badge color={badge.color}>{badge.text}</Badge> : null}
-        </div>
+      <div className="space-y-1 font-display">
+        <h1 className={cn('flex items-center', size === 'default' ? 'text-3xl' : 'text-2xl')}>
+          {hasLink && link ? (
+            <PayloadLink {...link} className={cn(size === 'default' ? 'text-xl' : 'text-2xl')}>
+              {link.text}
+            </PayloadLink>
+          ) : (
+            heading
+          )}
+        </h1>
         <ul className="flex flex-col">
           {tags?.map((tag, index) => (
             <li
               key={index}
               className={cn(
-                'dark:text-base-200 grid gap-2 font-medium text-black',
+                'grid gap-2 font-semibold text-neutral-800 dark:text-neutral-300',
                 size === 'default' ? 'grid-cols-[0.875rem_1fr]' : 'grid-cols-[1rem_1fr]',
               )}
             >
