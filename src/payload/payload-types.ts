@@ -357,11 +357,6 @@ export interface PayloadItemBlock {
   heading: string;
   hasLink?: boolean | null;
   link?: PayloadLinkGroupField;
-  hasBadge?: boolean | null;
-  badge?: {
-    text: string;
-    color: 'base' | 'red' | 'orange' | 'yellow' | 'green' | 'cyan' | 'blue' | 'purple' | 'magenta';
-  };
   tags: {
     icon: 'arrowRight' | 'arrowUpRightSmall' | 'briefcase' | 'clock' | 'code' | 'globe' | 'servers';
     type: 'text' | 'date' | 'dateRange';

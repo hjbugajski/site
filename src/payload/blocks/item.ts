@@ -53,69 +53,6 @@ export const Item: Block = {
       },
     }),
     {
-      name: 'hasBadge',
-      type: 'checkbox',
-      defaultValue: false,
-    },
-    {
-      name: 'badge',
-      type: 'group',
-      admin: {
-        condition: (_, siblingData: Partial<PayloadItemBlock>) => !!siblingData.hasBadge,
-      },
-      fields: [
-        {
-          name: 'text',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'color',
-          type: 'select',
-          defaultValue: 'gray',
-          required: true,
-          options: [
-            {
-              label: 'Base',
-              value: 'base',
-            },
-            {
-              label: 'Red',
-              value: 'red',
-            },
-            {
-              label: 'Orange',
-              value: 'orange',
-            },
-            {
-              label: 'Yellow',
-              value: 'yellow',
-            },
-            {
-              label: 'Green',
-              value: 'green',
-            },
-            {
-              label: 'Cyan',
-              value: 'cyan',
-            },
-            {
-              label: 'Blue',
-              value: 'blue',
-            },
-            {
-              label: 'Purple',
-              value: 'purple',
-            },
-            {
-              label: 'Magenta',
-              value: 'magenta',
-            },
-          ],
-        },
-      ],
-    },
-    {
       name: 'tags',
       type: 'array',
       required: true,

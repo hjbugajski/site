@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
-import { Inter_Tight } from 'next/font/google';
+import { Funnel_Display, Inter } from 'next/font/google';
 import Script from 'next/script';
 import { type GlobalSlug, getPayload } from 'payload';
 
@@ -11,11 +11,19 @@ import config from '@payload-config';
 
 import './globals.css';
 
-const interTight = Inter_Tight({
+const funnelDisplay = Funnel_Display({
   subsets: ['latin'],
   weight: 'variable',
   display: 'swap',
-  variable: '--font-inter-tight',
+  preload: true,
+  variable: '--font-funnel-display',
+});
+const inter = Inter({
+  subsets: ['latin'],
+  weight: 'variable',
+  display: 'swap',
+  preload: true,
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
@@ -39,8 +47,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html
       lang="en"
       className={cn(
-        interTight.variable,
-        'font-optical-sizing-auto bg-paper dark:text-base-500 text-base-600 font-sans font-normal dark:bg-black',
+        funnelDisplay.variable,
+        inter.variable,
+        'bg-neutral-50 font-normal text-neutral-700 font-optical-sizing-auto dark:bg-neutral-950 dark:text-neutral-400',
       )}
     >
       <body>

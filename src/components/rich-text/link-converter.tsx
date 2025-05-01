@@ -23,7 +23,7 @@ export const linkConverter: JSXConverter<SerializedLinkNode> = ({
       className={
         overrideClass ||
         cn(
-          'dark:text-base-200 hover:dark:border-base-200 inline-flex items-center gap-1 border-b-2 border-b-transparent text-black transition hover:border-black',
+          'inline-flex items-center gap-1 border-b-2 border-b-transparent text-neutral-800 transition hover:border-neutral-800 dark:text-neutral-300 hover:dark:border-neutral-300',
           additionalClass,
         )
       }

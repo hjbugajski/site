@@ -14,7 +14,7 @@ export default function NotFound() {
       <p>
         <Link
           href="/"
-          className="hover:dark:border-base-200 dark:text-base-200 inline-flex items-center gap-1 border-b-2 border-b-transparent text-black transition hover:border-black"
+          className="inline-flex items-center gap-1 border-b-2 border-b-transparent text-neutral-800 transition hover:border-neutral-800 dark:text-neutral-300 hover:dark:border-neutral-300"
         >
           Home
           <IconArrowRight className="inline-block size-4" />
