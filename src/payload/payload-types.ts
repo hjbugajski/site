@@ -111,6 +111,7 @@ export interface Config {
     navigation: NavigationSelect<false> | NavigationSelect<true>;
   };
   locale: null;
+  strictDraftTypes: true;
   user: PayloadUsersCollection & {
     collection: 'users';
   };
