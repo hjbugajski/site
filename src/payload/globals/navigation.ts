@@ -5,7 +5,7 @@ import { Role, hasRole } from '@/payload/access';
 import { linkArray } from '@/payload/fields/link';
 
 const useRevalidateTag: GlobalAfterChangeHook = ({ doc, global: { slug } }) => {
-  revalidateTag(`global_${slug}`);
+  revalidateTag(`global_${slug}`, { expire: 0 });
 
   return doc;
 };
