@@ -96,6 +96,7 @@ export default buildConfig({
     },
     migrationDir: path.join(dirname, 'migrations'),
     idType: 'uuid',
+    blocksAsJSON: true,
   }),
   editor: lexicalEditor(),
   email: resendAdapter({
@@ -129,5 +130,6 @@ export default buildConfig({
   serverURL: env.SERVER_URL,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
+    strictDraftTypes: true,
   },
 });

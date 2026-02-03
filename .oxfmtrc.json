@@ -1,0 +1,41 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 100,
+  "singleQuote": true,
+  "ignorePatterns": [
+    "**/.next-env.d.ts",
+    "**/.next/**",
+    "**/importMap.js",
+    "**/migrations/**",
+    "**/payload-types.ts"
+  ],
+  "experimentalSortImports": {
+    "customGroups": [
+      {
+        "groupName": "react",
+        "elementNamePattern": ["react", "react-dom"]
+      },
+      {
+        "groupName": "site",
+        "elementNamePattern": ["@/", "@payload-config"]
+      }
+    ],
+    "groups": [
+      ["builtin"],
+      ["react"],
+      ["external", "external-type"],
+      ["site", "site-type"],
+      ["internal", "internal-type"],
+      ["parent", "parent-type", "sibling", "sibling-type"],
+      ["index", "index-type"],
+      ["side-effect"]
+    ],
+    "newlinesBetween": true
+  },
+  "experimentalTailwindcss": {
+    "stylesheet": "./src/app/(site)/globals.css",
+    "attributes": ["class", "className"],
+    "functions": ["cn", "cva"],
+    "preserveWhitespace": false
+  }
+}
