@@ -112,9 +112,7 @@ export interface Config {
   };
   locale: null;
   strictDraftTypes: true;
-  user: PayloadUsersCollection & {
-    collection: 'users';
-  };
+  user: PayloadUsersCollection;
   jobs: {
     tasks: unknown;
     workflows: unknown;
@@ -190,6 +188,7 @@ export interface PayloadUsersCollection {
       }[]
     | null;
   password?: string | null;
+  collection: 'users';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
