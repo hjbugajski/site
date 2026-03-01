@@ -111,6 +111,9 @@ export interface Config {
     navigation: NavigationSelect<false> | NavigationSelect<true>;
   };
   locale: null;
+  widgets: {
+    collections: CollectionsWidget;
+  };
   strictDraftTypes: true;
   user: PayloadUsersCollection;
   jobs: {
@@ -374,6 +377,16 @@ export interface PayloadLinkArrayFieldSelect<T extends boolean = true> {
   umamiEvent?: T;
   umamiEventId?: T;
   id?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "collections_widget".
+ */
+export interface CollectionsWidget {
+  data?: {
+    [k: string]: unknown;
+  };
+  width: 'full';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
