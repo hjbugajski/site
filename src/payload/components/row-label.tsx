@@ -13,5 +13,6 @@ export function RowLabel({ path, fallback }: { path: string; fallback: string })
     return undefined;
   }, data);
 
+  // oxlint-disable-next-line react/jsx-no-useless-fragment
   return <>{fieldValue || `${fallback} ${rowNumber}`}</>;
 }

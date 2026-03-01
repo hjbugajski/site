@@ -4,10 +4,11 @@ import { Funnel_Display, Inter } from 'next/font/google';
 import Script from 'next/script';
 import { type GlobalSlug, getPayload } from 'payload';
 
+import config from '@payload-config';
+
 import { Navigation } from '@/components/navigation';
 import { env } from '@/env/client';
 import { cn } from '@/utils/cn';
-import config from '@payload-config';
 
 import './globals.css';
 

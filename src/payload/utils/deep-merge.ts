@@ -3,7 +3,7 @@ function filterArray(
   source: Record<string, unknown>[],
   key: string,
 ): Record<string, unknown>[] {
-  return source.filter((s) => !target.find((t) => t?.[key] === s?.[key]));
+  return source.filter((s) => !target.some((t) => t?.[key] === s?.[key]));
 }
 
 function isObject(item: unknown): item is Record<string, unknown> {
