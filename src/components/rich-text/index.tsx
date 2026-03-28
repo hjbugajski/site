@@ -99,8 +99,8 @@ const jsxConverters: JSXConvertersFunction<NodeType> = () => ({
   listitem: listitemConverter,
   link: linkConverter,
   blocks: {
-    item: ({ node }) => <ItemBlock {...node.fields} />,
-    section: ({ node }) => <SectionBlock {...node.fields} />,
+    item: ({ node }) => <ItemBlock {...node.fields} RichText={RichText} />,
+    section: ({ node }) => <SectionBlock {...node.fields} RichText={RichText} />,
   },
 });
 
