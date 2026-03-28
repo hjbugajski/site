@@ -1,15 +1,20 @@
+import type { ComponentType } from 'react';
+
 import { DateTime } from 'luxon';
 
 import { ItemDuration } from '@/components/blocks/item-duration.client';
-import { RichText } from '@/components/rich-text';
 import { PayloadLink } from '@/components/ui/payload-link';
 import { Icons } from '@/icons';
 import type { PayloadItemBlock } from '@/payload/payload-types';
 import { cn } from '@/utils/cn';
 import { formatDuration } from '@/utils/duration';
 
-export function ItemBlock(props: PayloadItemBlock) {
-  const { content, hasLink, heading, link, size, tags } = props;
+interface ItemBlockProps extends PayloadItemBlock {
+  RichText: ComponentType<{ content?: PayloadItemBlock['content'] }>;
+}
+
+export function ItemBlock(props: ItemBlockProps) {
+  const { content, hasLink, heading, link, RichText, size, tags } = props;
 
   function formatDate(date: string) {
     return DateTime.fromISO(date).toLocaleString({ month: 'short', year: 'numeric' });
