@@ -13,12 +13,12 @@ interface ItemBlockProps extends PayloadItemBlock {
   RichText: ComponentType<{ content?: PayloadItemBlock['content'] }>;
 }
 
+function formatDate(date: string) {
+  return DateTime.fromISO(date).toLocaleString({ month: 'short', year: 'numeric' });
+}
+
 export function ItemBlock(props: ItemBlockProps) {
   const { content, hasLink, heading, link, RichText, size, tags } = props;
-
-  function formatDate(date: string) {
-    return DateTime.fromISO(date).toLocaleString({ month: 'short', year: 'numeric' });
-  }
 
   return (
     <div className="my-5 space-y-2 first:mt-0 last:mb-0">
