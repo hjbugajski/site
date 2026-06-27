@@ -6,16 +6,19 @@ import { resendAdapter } from '@payloadcms/email-resend';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { buildConfig } from 'payload';
 
+import { env as clientEnv } from '@/env/client';
 import { env } from '@/env/server';
 import { Role } from '@/payload/access';
 import { Pages } from '@/payload/collections/pages';
 import { Users } from '@/payload/collections/users';
 import { Navigation } from '@/payload/globals/navigation';
+import { getServerSideUrl } from '@/payload/utils/get-server-side-url';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-const whitelist = [env.SERVER_URL, ...env.DOMAINS.split(' ')];
+const serverUrl = getServerSideUrl();
+const whitelist = [serverUrl, ...clientEnv.NEXT_PUBLIC_DOMAIN.split(' ')];
 
 export default buildConfig({
   admin: {
@@ -100,8 +103,8 @@ export default buildConfig({
   }),
   editor: lexicalEditor(),
   email: resendAdapter({
-    defaultFromAddress: env.DEFAULT_FROM_ADDRESS,
-    defaultFromName: env.DEFAULT_FROM_NAME,
+    defaultFromAddress: env.RESEND_DEFAULT_FROM_ADDRESS,
+    defaultFromName: env.RESEND_DEFAULT_FROM_NAME,
     apiKey: env.RESEND_API_KEY,
   }),
   globals: [Navigation],
@@ -127,7 +130,7 @@ export default buildConfig({
   },
   plugins: [],
   secret: env.PAYLOAD_SECRET,
-  serverURL: env.SERVER_URL,
+  serverURL: serverUrl,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
     strictDraftTypes: true,
