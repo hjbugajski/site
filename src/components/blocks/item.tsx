@@ -18,11 +18,12 @@ function formatDate(date: string) {
 }
 
 export function ItemBlock(props: ItemBlockProps) {
-  const { content, hasLink, heading, link, RichText, size, tags } = props;
+  const { content, hasLink, heading, link, positions, RichText, size, tags } = props;
+  const hasPositions = !!positions && positions.length > 0;
 
   return (
     <div className="my-5 space-y-2 first:mt-0 last:mb-0">
-      <div className="space-y-1 font-display">
+      <div className="space-y-1">
         <h1 className={cn('flex items-center', size === 'default' ? 'text-3xl' : 'text-2xl')}>
           {hasLink && link ? (
             <PayloadLink {...link} className={cn(size === 'default' ? 'text-xl' : 'text-2xl')}>
@@ -49,7 +50,10 @@ export function ItemBlock(props: ItemBlockProps) {
               >
                 <Icons
                   name={tag.icon}
-                  className={cn('shrink-0', size === 'default' ? 'size-3.5' : 'size-4')}
+                  className={cn(
+                    'shrink-0 text-neutral-700 dark:text-neutral-400',
+                    size === 'default' ? 'size-3.5' : 'size-4',
+                  )}
                 />
               </div>
               {tag.type === 'text' ? (
@@ -70,7 +74,68 @@ export function ItemBlock(props: ItemBlockProps) {
           ))}
         </ul>
       </div>
-      <RichText content={content} />
+      {hasPositions ? (
+        <ol className="mt-3 flex flex-col">
+          {positions.map((position, index) => {
+            const isLast = index === positions.length - 1;
+
+            return (
+              <li
+                key={position.id ?? index}
+                className={cn(
+                  'grid gap-3',
+                  size === 'default' ? 'grid-cols-[0.875rem_1fr]' : 'grid-cols-[1rem_1fr]',
+                  !isLast && 'pb-3',
+                )}
+              >
+                <div className="relative flex justify-center">
+                  {!isLast ? (
+                    <span
+                      aria-hidden="true"
+                      className="absolute top-2 bottom-0 w-px bg-neutral-300 dark:bg-neutral-700"
+                    />
+                  ) : null}
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      'relative shrink-0 rounded-full bg-neutral-700 dark:bg-neutral-400',
+                      size === 'default' ? 'mt-1 size-2' : 'mt-1.5 size-2.5',
+                    )}
+                  />
+                </div>
+                <div className="space-y-0.5">
+                  <h2
+                    className={cn('font-semibold', size === 'default' ? 'text-base' : 'text-lg')}
+                  >
+                    {position.title}
+                  </h2>
+                  {position.dateRange ? (
+                    <p
+                      className={cn(
+                        'text-neutral-700 dark:text-neutral-400',
+                        size === 'default' ? 'text-xs' : 'text-sm',
+                      )}
+                    >
+                      {formatDate(position.dateRange.startDate)} &ndash;{' '}
+                      {position.dateRange.endDate
+                        ? formatDate(position.dateRange.endDate)
+                        : 'Present'}{' '}
+                      •{' '}
+                      {position.dateRange.endDate ? (
+                        formatDuration(position.dateRange.startDate, position.dateRange.endDate)
+                      ) : (
+                        <ItemDuration date={position.dateRange.startDate} />
+                      )}
+                    </p>
+                  ) : null}
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      ) : (
+        <RichText content={content} />
+      )}
     </div>
   );
 }

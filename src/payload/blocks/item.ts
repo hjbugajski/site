@@ -162,8 +162,55 @@ export const Item: Block = {
       ],
     },
     {
+      name: 'positions',
+      type: 'array',
+      admin: {
+        description:
+          'Optional. Add multiple positions to render a timeline view (e.g., roles at one company). Hides the content field below.',
+        components: {
+          RowLabel: {
+            path: '@/payload/components/row-label.tsx',
+            exportName: 'RowLabel',
+            clientProps: {
+              path: 'title',
+              fallback: 'Position',
+            },
+          },
+        },
+      },
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'dateRange',
+          type: 'group',
+          fields: [
+            {
+              name: 'startDate',
+              type: 'date',
+              required: true,
+            },
+            {
+              name: 'endDate',
+              type: 'date',
+              admin: {
+                description: 'Leave blank if this position is ongoing.',
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: 'content',
       type: 'richText',
+      admin: {
+        condition: (_, siblingData: Partial<PayloadItemBlock>) =>
+          !siblingData.positions || siblingData.positions.length === 0,
+      },
       editor: lexicalEditor({
         features: () => [
           ParagraphFeature(),

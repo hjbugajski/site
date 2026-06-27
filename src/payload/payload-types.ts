@@ -423,6 +423,22 @@ export interface PayloadItemBlock {
     };
     id?: string | null;
   }[];
+  /**
+   * Optional. Add multiple positions to render a timeline view (e.g., roles at one company). Hides the content field below.
+   */
+  positions?:
+    | {
+        title: string;
+        dateRange: {
+          startDate: string;
+          /**
+           * Leave blank if this position is ongoing.
+           */
+          endDate?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
   content?: {
     root: {
       type: string;

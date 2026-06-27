@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
-import { Funnel_Display, Inter } from 'next/font/google';
+import { Funnel_Display, Funnel_Sans } from 'next/font/google';
 import Script from 'next/script';
 import { type GlobalSlug, getPayload } from 'payload';
 
@@ -19,12 +19,12 @@ const funnelDisplay = Funnel_Display({
   preload: true,
   variable: '--font-funnel-display',
 });
-const inter = Inter({
+const funnelSans = Funnel_Sans({
   subsets: ['latin'],
   weight: 'variable',
   display: 'swap',
   preload: true,
-  variable: '--font-inter',
+  variable: '--font-funnel-sans',
 });
 
 export const metadata: Metadata = {
@@ -49,7 +49,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       lang="en"
       className={cn(
         funnelDisplay.variable,
-        inter.variable,
+        funnelSans.variable,
         'bg-neutral-50 font-normal text-neutral-700 font-optical-sizing-auto dark:bg-neutral-950 dark:text-neutral-400',
       )}
     >
