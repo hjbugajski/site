@@ -1,8 +1,20 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import { IconArrowRight } from '@/icons/arrow-right';
 
-export default function Error({ retry }: { retry: () => void }) {
+export default function Error({
+  error,
+  retry,
+}: {
+  error: Error & { digest?: string };
+  retry: () => void;
+}) {
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
   return (
     <section className="space-y-3">
       <div className="space-y-1">
