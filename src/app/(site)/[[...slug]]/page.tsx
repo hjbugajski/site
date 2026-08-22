@@ -1,5 +1,4 @@
-import { cache } from 'react';
-
+import { cacheLife, cacheTag } from 'next/cache';
 import { draftMode } from 'next/headers';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next/types';
@@ -10,9 +9,10 @@ import config from '@payload-config';
 import { metadata } from '@/app/(site)/layout';
 import { LivePreviewListener } from '@/components/live-preview-listener';
 import { RichText } from '@/components/rich-text';
+import type { PayloadPagesCollection } from '@/payload/payload-types';
 
 interface PageProps {
-  params: Promise<{ slug: string[] }>;
+  params: Promise<{ slug?: string[] }>;
 }
 
 const pageTitle = (title: string | undefined, metadata: Metadata) =>
@@ -20,14 +20,10 @@ const pageTitle = (title: string | undefined, metadata: Metadata) =>
     ? metadata.title
     : `${title} | ${metadata.title as string}`;
 
-const queryPage = cache(async ({ slug: segments }: { slug: string[] }) => {
-  const slugSegments = segments || ['home'];
-  const slug = slugSegments[slugSegments.length - 1];
+const pageSlug = (segments: string[] | undefined) => segments?.at(-1) || 'home';
 
-  const draftModePromis = draftMode();
-  const payloadPromise = getPayload({ config });
-
-  const [{ isEnabled: draft }, payload] = await Promise.all([draftModePromis, payloadPromise]);
+const queryPage = async ({ slug, draft }: { slug: string; draft: boolean }) => {
+  const payload = await getPayload({ config });
 
   const result = await payload.find({
     collection: 'pages',
@@ -43,7 +39,15 @@ const queryPage = cache(async ({ slug: segments }: { slug: string[] }) => {
   });
 
   return result.docs?.[0] || null;
-});
+};
+
+const queryCachedPage = async (slug: string) => {
+  'use cache';
+  cacheLife('max');
+  cacheTag(`page_${slug}`);
+
+  return queryPage({ slug, draft: false });
+};
 
 export async function generateStaticParams() {
   try {
@@ -66,7 +70,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const page = await queryPage({ slug });
+  const page = await queryCachedPage(pageSlug(slug));
 
   return {
     title: pageTitle(page?.title, metadata),
@@ -74,10 +78,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+/**
+ * Rendering blocks formats dates and open-ended durations with Luxon, which reads the current
+ * time. Caching the rendered output keeps that out of the prerender. The cache key is the content
+ * itself, so edits render immediately, while the daily lifetime keeps durations current.
+ */
+async function PageBody({ content }: { content: PayloadPagesCollection['content'] }) {
+  'use cache';
+  cacheLife('days');
+
+  return <RichText content={content} />;
+}
+
 export default async function Page({ params }: PageProps) {
-  const { isEnabled: draft } = await draftMode();
   const { slug } = await params;
-  const page = await queryPage({ slug });
+  const { isEnabled: draft } = await draftMode();
+  const page = draft
+    ? await queryPage({ slug: pageSlug(slug), draft })
+    : await queryCachedPage(pageSlug(slug));
 
   if (!page) {
     notFound();
@@ -86,7 +104,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <>
       {draft ? <LivePreviewListener /> : null}
-      <RichText content={page.content} />
+      <PageBody content={page.content} />
     </>
   );
 }

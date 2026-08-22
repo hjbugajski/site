@@ -6,6 +6,8 @@ import type { NextConfig } from 'next';
 const isProductionVercel = env.VERCEL_TARGET_ENV === 'production';
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
+  partialPrefetching: true,
   headers: () => [
     {
       source: '/(.*)',
