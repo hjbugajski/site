@@ -26,8 +26,12 @@ const useSlug: FieldHook<PayloadPagesCollection, string | undefined, PayloadPage
 const revalidatePageAfterChange: CollectionAfterChangeHook<PayloadPagesCollection> = ({
   doc,
   previousDoc,
-  req: { payload },
+  req: { context, payload },
 }) => {
+  if (context.disableRevalidate) {
+    return doc;
+  }
+
   if (doc._status === 'published') {
     payload.logger.info(`Revalidating page: ${doc.slug}`);
     revalidateTag(`page_${doc.slug}`, { expire: 0 });
@@ -37,6 +41,15 @@ const revalidatePageAfterChange: CollectionAfterChangeHook<PayloadPagesCollectio
     payload.logger.info(`Revalidating previous page: ${previousDoc.slug}`);
     revalidateTag(`page_${previousDoc.slug}`, { expire: 0 });
   }
+
+  /** The slug is regenerated from the title, so a rename would otherwise leave the old URL stale. */
+  if (previousDoc?.slug && previousDoc.slug !== doc.slug) {
+    payload.logger.info(`Revalidating renamed page: ${previousDoc.slug}`);
+    revalidateTag(`page_${previousDoc.slug}`, { expire: 0 });
+  }
+
+  /** Navigation inlines page relationships, so any page change can stale the cached global. */
+  revalidateTag('global_navigation', { expire: 0 });
 
   return doc;
 };
