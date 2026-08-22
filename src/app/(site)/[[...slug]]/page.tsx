@@ -49,9 +49,14 @@ const queryCachedPage = async (slug: string) => {
   return queryPage({ slug, draft: false });
 };
 
+type StaticParams = { slug?: PayloadPagesCollection['slug'][] };
+
+const homeParams: StaticParams[] = [{ slug: [] }, { slug: ['home'] }];
+
 /**
  * Cache Components requires at least one param so it can validate the static shell, so fall back
- * to the home slug when the database is unreachable or has no pages yet.
+ * to the home params when the database is unreachable or has no pages yet. The home page is
+ * emitted twice so the canonical `/` is prerendered alongside `/home`.
  */
 export async function generateStaticParams() {
   try {
@@ -66,11 +71,13 @@ export async function generateStaticParams() {
       },
     });
 
-    const params = pages.docs.map(({ slug }) => ({ slug: [slug] }));
+    const params = pages.docs.flatMap<StaticParams>(({ slug }) =>
+      slug === 'home' ? homeParams : [{ slug: [slug] }],
+    );
 
-    return params.length > 0 ? params : [{ slug: ['home'] }];
+    return params.length > 0 ? params : homeParams;
   } catch {
-    return [{ slug: ['home'] }];
+    return homeParams;
   }
 }
 
