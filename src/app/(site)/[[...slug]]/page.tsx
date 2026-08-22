@@ -49,6 +49,10 @@ const queryCachedPage = async (slug: string) => {
   return queryPage({ slug, draft: false });
 };
 
+/**
+ * Cache Components requires at least one param so it can validate the static shell, so fall back
+ * to the home slug when the database is unreachable or has no pages yet.
+ */
 export async function generateStaticParams() {
   try {
     const payload = await getPayload({ config });
@@ -62,9 +66,11 @@ export async function generateStaticParams() {
       },
     });
 
-    return pages.docs.map(({ slug }) => ({ slug: [slug] }));
+    const params = pages.docs.map(({ slug }) => ({ slug: [slug] }));
+
+    return params.length > 0 ? params : [{ slug: ['home'] }];
   } catch {
-    return [{ slug: undefined }];
+    return [{ slug: ['home'] }];
   }
 }
 
