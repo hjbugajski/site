@@ -39,7 +39,7 @@ const fetchCachedGlobal = async (slug: GlobalSlug) => {
 
   const payload = await getPayload({ config });
 
-  return payload.findGlobal({ slug });
+  return payload.findGlobal({ slug, overrideAccess: false });
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
