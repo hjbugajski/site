@@ -2,7 +2,6 @@ import type { ComponentType } from 'react';
 
 import { DateTime } from 'luxon';
 
-import { ItemDuration } from '@/components/blocks/item-duration.client';
 import { PayloadLink } from '@/components/ui/payload-link';
 import { Icons } from '@/icons';
 import type { PayloadItemBlock } from '@/payload/payload-types';
@@ -57,7 +56,7 @@ export function ItemBlock(props: ItemBlockProps) {
               ) : null}
               {tag.type === 'date' && tag.date ? (
                 <p className={cn(size === 'default' && 'text-sm')}>
-                  {formatDate(tag.date)} • <ItemDuration date={tag.date} />
+                  {formatDate(tag.date)} • {formatDuration(tag.date)}
                 </p>
               ) : null}
               {tag.type === 'dateRange' && tag.dateRange ? (

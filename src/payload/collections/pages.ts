@@ -1,5 +1,5 @@
 import { BlocksFeature, lexicalEditor } from '@payloadcms/richtext-lexical';
-import { revalidatePath } from 'next/cache';
+import { revalidateTag } from 'next/cache';
 import type {
   CollectionAfterChangeHook,
   CollectionAfterDeleteHook,
@@ -26,21 +26,30 @@ const useSlug: FieldHook<PayloadPagesCollection, string | undefined, PayloadPage
 const revalidatePageAfterChange: CollectionAfterChangeHook<PayloadPagesCollection> = ({
   doc,
   previousDoc,
-  req: { payload },
+  req: { context, payload },
 }) => {
-  if (doc._status === 'published') {
-    const path = doc.slug === 'home' ? '/' : `/${doc.slug}`;
+  if (context.disableRevalidate) {
+    return doc;
+  }
 
-    payload.logger.info(`Revalidating path: ${path}`);
-    revalidatePath(path);
+  if (doc._status === 'published') {
+    payload.logger.info(`Revalidating page: ${doc.slug}`);
+    revalidateTag(`page_${doc.slug}`, { expire: 0 });
   }
 
   if (previousDoc?._status === 'published' && doc._status !== 'published') {
-    const oldPath = previousDoc.slug === 'home' ? '/' : `/${previousDoc.slug}`;
-
-    payload.logger.info(`Revalidating previous path: ${oldPath}`);
-    revalidatePath(oldPath);
+    payload.logger.info(`Revalidating previous page: ${previousDoc.slug}`);
+    revalidateTag(`page_${previousDoc.slug}`, { expire: 0 });
   }
+
+  /** The slug is regenerated from the title, so a rename would otherwise leave the old URL stale. */
+  if (previousDoc?.slug && previousDoc.slug !== doc.slug) {
+    payload.logger.info(`Revalidating renamed page: ${previousDoc.slug}`);
+    revalidateTag(`page_${previousDoc.slug}`, { expire: 0 });
+  }
+
+  /** Navigation inlines page relationships, so any page change can stale the cached global. */
+  revalidateTag('global_navigation', { expire: 0 });
 
   return doc;
 };
@@ -50,9 +59,7 @@ export const revalidatePageAfterDelete: CollectionAfterDeleteHook<PayloadPagesCo
   req: { context },
 }) => {
   if (!context.disableRevalidate) {
-    const path = doc?.slug === 'home' ? '/' : `/${doc?.slug}`;
-
-    revalidatePath(path);
+    revalidateTag(`page_${doc?.slug}`, { expire: 0 });
   }
 
   return doc;
